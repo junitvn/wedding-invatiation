@@ -1,5 +1,7 @@
 'use client';
 
+import { imageUrl } from '../lib/image';
+
 const HIGHLIGHTED_DAY = 17;
 const MONTH_DAYS = 31;
 const FIRST_DAY_OF_WEEK = 4;
@@ -26,7 +28,7 @@ export default function CalendarSection() {
           style={{ aspectRatio: '3/5', borderRadius: '50% 50% 0 0 / 25% 25% 0 0' }}
         >
           <img
-            src="/images/welcome.jpg"
+            src={imageUrl('/images/welcome.jpg')}
             alt="Welcome"
             className="w-full h-full object-cover"
             onError={(e) => {
@@ -70,7 +72,7 @@ export default function CalendarSection() {
                     {day !== null ? (
                       day === HIGHLIGHTED_DAY ? (
                         <div className="flex items-center justify-center">
-                          <img src="/images/calen_heart_1.png" alt="ring" className="w-8 h-8 absolute object-cover" />
+                          <img src={imageUrl('/images/calen_heart_1.png')} alt="ring" className="w-8 h-8 absolute object-cover" />
                           <span className="relative inline-flex items-center justify-center">
                             <span
                               className="relative text-white font-bold text-[14px]"

@@ -1,5 +1,7 @@
 'use client';
 
+import { imageUrl } from '../lib/image';
+
 export default function FamilySection() {
   return (
     <section className="bg-white py-12 px-6">
@@ -41,7 +43,7 @@ export default function FamilySection() {
         <div className="flex flex-col items-start">
           <div className="w-full aspect-[3/4] bg-gray-200 rounded overflow-hidden">
             <img
-              src="/images/groom.jpg"
+              src={imageUrl('/images/groom.jpg')}
               alt="Chú rể"
               className="w-full h-full object-cover object-top"
               onError={(e) => {
@@ -50,7 +52,7 @@ export default function FamilySection() {
             />
           </div>
           <img
-            src="/images/text_groom.png"
+            src={imageUrl('/images/text_groom.png')}
             alt="Chú rể"
             className="w-auto h-[20px] object-contain mt-4"
             onError={(e) => {
@@ -68,7 +70,7 @@ export default function FamilySection() {
         <div className="flex flex-col items-end">
           <div className="w-full aspect-[3/4] bg-gray-200 rounded overflow-hidden">
             <img
-              src="/images/bride.jpg"
+              src={imageUrl('/images/bride.jpg')}
               alt="Cô dâu"
               className="w-full h-full object-cover object-top"
               onError={(e) => {
@@ -77,7 +79,7 @@ export default function FamilySection() {
             />
           </div>
           <img
-            src="/images/text_bride.png"
+            src={imageUrl('/images/text_bride.png')}
             alt="Chú rể"
             className="w-auto h-[20px] object-contain mt-4"
             onError={(e) => {

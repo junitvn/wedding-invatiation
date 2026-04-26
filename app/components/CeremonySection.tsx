@@ -1,5 +1,7 @@
 'use client';
 
+import { imageUrl } from '../lib/image';
+
 export default function CeremonySection() {
   return (
     <section className="bg-white py-12 flex flex-col items-center px-6">
@@ -14,7 +16,7 @@ export default function CeremonySection() {
       {/* Couple image */}
       <div className="relative w-3/4 aspect-[3/4] bg-gray-200 rounded overflow-hidden mb-6">
         <img
-          src="/images/ceremony.jpg"
+          src={imageUrl('/images/ceremony.jpg')}
           alt="Couple"
           className="w-full h-full object-cover"
           onError={(e) => {
@@ -26,7 +28,7 @@ export default function CeremonySection() {
       {/* We got married script */}
       <div className="text-center mb-2">
         <img
-          src="/images/text_wgm.png"
+          src={imageUrl('/images/text_wgm.png')}
           alt="We got married"
           className="w-auto h-[32px] object-contain"
           onError={(e) => {

@@ -1,12 +1,14 @@
 'use client';
 
+import { imageUrl } from '../lib/image';
+
 export default function HeroSection() {
   return (
     <section className="relative w-full h-screen overflow-hidden">
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/hero.jpg')" }}
+        style={{ backgroundImage: `url('${imageUrl('/images/hero.jpg')}')` }}
       />
       {/* Fallback gradient when no image */}
       {/* <div className="absolute inset-0 bg-gradient-to-b from-gray-400 via-gray-300 to-gray-500" /> */}
@@ -50,7 +52,7 @@ export default function HeroSection() {
         {/* Bow at arch peak (100px from top of container) */}
         <div className="absolute left-1/2 z-30" style={{ top: '138px', transform: 'translateX(-50%) translateY(-50%)' }}>
           <img
-            src="/images/no_do.png"
+            src={imageUrl('/images/no_do.png')}
             alt=""
             className="w-20 object-contain select-none"
             style={{ transformOrigin: 'top center', animation: 'bowSway 3s ease-in-out infinite' }}

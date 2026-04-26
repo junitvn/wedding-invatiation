@@ -1,9 +1,11 @@
+import { imageUrl } from '../lib/image';
+
 export default function WelcomeSection() {
   return (
     <section className="relative w-full overflow-hidden">
       <div className="relative w-full">
         <img
-          src="/images/welcome.jpg"
+          src={imageUrl('/images/welcome.jpg')}
           alt="Welcome to our wedding"
           className="w-full object-cover"
         />

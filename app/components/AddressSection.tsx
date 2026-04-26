@@ -1,6 +1,7 @@
 'use client';
 
 import type { VenueConfig } from '../config';
+import { imageUrl } from '../lib/image';
 
 export default function AddressSection({ venue }: { venue: VenueConfig }) {
 
@@ -10,7 +11,7 @@ export default function AddressSection({ venue }: { venue: VenueConfig }) {
         {/* Couple photo */}
         <div className="w-[45%] flex-shrink-0 rounded overflow-hidden bg-gray-200" style={{ aspectRatio: '3/4' }}>
           <img
-            src="/images/ceremony.jpg"
+            src={imageUrl('/images/ceremony.jpg')}
             alt="Couple"
             className="w-full h-full object-cover"
             onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
