@@ -1,5 +1,6 @@
 'use client';
 
+import { VENUES } from '../config';
 import { imageUrl } from '../lib/image';
 
 export default function CeremonySection() {
@@ -43,31 +44,41 @@ export default function CeremonySection() {
       {/* Vietnamese calendar date display */}
       <div className="text-center mb-4 w-full">
         <p
-          className="tracking-[0.25em] text-[#7B1C1C] text-[24px] font-sf mb-4"
+          className="tracking-[0.25em] text-title text-[24px] font-sf mb-4"
         >
           LỄ THÀNH HÔN
         </p>
-        <div className="flex justify-center font-sf grid tạirid-cols-3 w-full uppercase">
+        <div className="flex justify-center font-sf grid grid-cols-3 w-full uppercase">
           <div className="flex flex-col items-center justify-center w-full h-full mt-2">
-            <p className="border border-[1px] border-l-0 border-r-0 border-gray-600 text-[#7B1C1C] w-full text-[24px]">Tháng 5</p>
+            <p className="border border-[1px] border-l-0 border-r-0 border-gray-600 text-gold w-full text-[24px]">Tháng 5</p>
           </div>
           <div className="flex flex-col items-center justify-center w-full h-full">
-            <p className="text-[24px] font-light text-[#7B1C1C]">THỨ BẢY</p>
-            <p className="font-bold text-[60px] text-[#7B1C1C]">17</p>
-            <p className="text-[24px] font-normal text-[#7B1C1C]">14:30</p>
+            <p className="text-[24px] font-light text-gold">CHỦ NHẬT</p>
+            <p className="font-bold text-[60px] text-gold">17</p>
+            <p className="text-[24px] font-normal text-gold">14:30</p>
           </div>
           <div className="flex flex-col items-center justify-center w-full h-full mt-2">
-            <p className="border border-l-0 border-r-0 border-gray-600 text-[#7B1C1C] text-[24px] w-full">Năm 2026</p>
+            <p className="border border-l-0 border-r-0 border-gray-600 text-gold text-[24px] w-full">Năm 2026</p>
           </div>
         </div>
       </div>
 
       {/* Lunar date */}
       <div className="text-center mt-4">
-        <p className="text-gray-500 font-sf text-sm">
+        <p className="text-title font-sf text-sm">
           Tức ngày: 01 tháng 04 năm Bính Ngọ
         </p>
       </div>
+
+      <p className="mt-10 text-title text-[16px] font-normal font-sf uppercase">
+        Hôn lễ được cử hành tại
+      </p>
+      <p className="my-4 text-gold text-[24px] font-normal font-sf uppercase">
+        {VENUES.nhatrai.title}
+      </p>
+      <p className="text-title text-[16px] font-normal text-center whitespace-pre-line font-sf">
+        {VENUES.nhatrai.textAddress}
+      </p>
 
       {/* Decorative line */}
       <div className="h-px bg-gray-200 mt-8" />

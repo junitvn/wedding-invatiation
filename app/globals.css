@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
+@config "../tailwind.config.ts";
 
 @font-face {
   font-family: 'UVN Ke Chuyen';
@@ -70,6 +71,9 @@
   --font-ljs: 'Le Jour Script', cursive;
   --font-ljr: 'Le Jour Serif', serif;
   --font-sf: 'SFU Sigvar', sans-serif;
+
+  --color-gold: #8B6914;
+  --color-dark-red: #7B1C1C;
 }
 
 :root {
