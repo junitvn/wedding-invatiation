@@ -1,26 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
+
+@font-face {
+  font-family: 'UVN Ke Chuyen';
+  src: url('/fonts/UVNKeChuyen3.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Le Jour Script';
+  src: url('/fonts/le_jour_script/Le Jour Script Personal Use Only.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Le Jour Serif';
+  src: url('/fonts/le_jour_script/Le Jour Serif Personal Use Only.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SFU Sigvar';
+  src: url('/fonts/SFU Sigvar/SFUSigvarLight.TTF') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SFU Sigvar';
+  src: url('/fonts/SFU Sigvar/SFUSigvarRegular.TTF') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SFU Sigvar';
+  src: url('/fonts/SFU Sigvar/SFUSigvarRegularItalic.TTF') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SFU Sigvar';
+  src: url('/fonts/SFU Sigvar/SFUSigvarDemiBold.TTF') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SFU Sigvar';
+  src: url('/fonts/SFU Sigvar/SFUSigvarDemiBoldItalic_.TTF') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@theme {
+  --font-uvn: 'UVN Ke Chuyen', sans-serif;
+  --font-ljs: 'Le Jour Script', cursive;
+  --font-ljr: 'Le Jour Serif', serif;
+  --font-sf: 'SFU Sigvar', sans-serif;
+}
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1a1a1a;
+  --gold: #8B6914;
+  --dark-red: #7B1C1C;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Cormorant Garamond', serif;
+  overflow-x: hidden;
+}
+
+.font-script {
+  font-family: 'Great Vibes', cursive;
+}
+
+.font-sans {
+  font-family: 'Montserrat', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes bowSway {
+  0%, 100% { transform: rotate(-6deg); }
+  50%       { transform: rotate(6deg); }
 }
