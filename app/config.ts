@@ -15,13 +15,13 @@ export const VENUES: Record<string, VenueConfig> = {
     title: 'TƯ GIA NHÀ TRAI',
     address: 'Ứng Hoà - Hà Nội',
     textAddress: `Nhà số 94-96, đường làng phía Tây, \nthôn Cung Thuế, xã Ứng Hoà, thành phố Hà Nội`,
-    mapSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1693.903807543785!2d105.86121701559864!3d20.676652683977462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135cb4af8896d81%3A0x5349e1a458477421!2zTmjDoCB4ZSBMw6ogSOG7kw!5e1!3m2!1sen!2s!4v1777203752955!5m2!1sen!2s',
+    mapSrc: 'https://maps.app.goo.gl/f9YcU5vGzLzN29fXA',
   },
   nhagai: {
     title: 'TƯ GIA NHÀ GÁI',
-    address: 'Hà Nội',
-    textAddress: 'Hà Nội',
-    mapSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1693.903807543785!2d105.86121701559864!3d20.676652683977462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135cb4af8896d81%3A0x5349e1a458477421!2zTmjDoCB4ZSBMw6ogSOG7kw!5e1!3m2!1sen!2s!4v1777203752955!5m2!1sen!2s',
+    address: 'Văn Quan - Lạng Sơn',
+    textAddress: 'Nhà thi đấu phố Đức Hinh,\n xã Văn Quan, tỉnh Lạng Sơn',
+    mapSrc: 'https://maps.app.goo.gl/KWG9UUyZKwo4V9Vb9',
   },
 };
 

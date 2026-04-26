@@ -57,7 +57,7 @@ export default function InvitationSection({ guestName, venue = DEFAULT_VENUE }: 
       </p>
 
       <a
-        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(venue.address)}`}
+        href={venue.mapSrc}
         target="_blank"
         rel="noopener noreferrer"
         className="inline-block mt-4 px-5 py-2 border border-[#7B1C1C] text-[#7B1C1C] text-[14px] font-sf font-normal tracking-wide hover:bg-[#7B1C1C] hover:text-white transition-colors"

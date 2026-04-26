@@ -44,7 +44,7 @@ function Login({ onAuth }: { onAuth: () => void }) {
     else { setErr(true); setPw(''); }
   }
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+    <div className="min-h-screen w-full bg-gray-50 flex items-center justify-center px-4">
       <form onSubmit={submit} className="bg-white rounded-2xl shadow p-8 w-full max-w-xs">
         <h1 className="text-gray-900 text-xl font-semibold mb-6 text-center">Admin</h1>
         <input
@@ -64,7 +64,7 @@ function Login({ onAuth }: { onAuth: () => void }) {
 }
 
 // ─── Tab bar ─────────────────────────────────────────────────────────────────
-const TABS = ['Lời chúc', 'Xác nhận', 'Khách mời', 'Địa điểm'] as const;
+const TABS = ['Lời chúc', 'Xác nhận', 'Khách mời'] as const;
 type Tab = typeof TABS[number];
 
 // ─── Shared ───────────────────────────────────────────────────────────────────
@@ -79,9 +79,8 @@ function VenueFilterBar({ value, onChange }: { value: VenueFilter; onChange: (v:
         <button
           key={k}
           onClick={() => onChange(k)}
-          className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
-            value === k ? 'bg-gray-900 text-white' : 'bg-white text-gray-500 border border-gray-200 hover:bg-gray-50'
-          }`}
+          className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${value === k ? 'bg-gray-900 text-white' : 'bg-white text-gray-500 border border-gray-200 hover:bg-gray-50'
+            }`}
         >
           {VENUE_FILTER_LABELS[k]}
         </button>
@@ -217,11 +216,10 @@ function VenuePicker({ value, onChange }: { value: string; onChange: (v: string)
                 key={k}
                 type="button"
                 onClick={() => { onChange(k); setOpen(false); }}
-                className={`w-full text-left px-5 py-4 text-[15px] border-t border-gray-100 transition-colors ${
-                  value === k
-                    ? 'text-gray-900 font-semibold bg-gray-50'
-                    : 'text-gray-700 hover:bg-gray-50'
-                }`}
+                className={`w-full text-left px-5 py-4 text-[15px] border-t border-gray-100 transition-colors ${value === k
+                  ? 'text-gray-900 font-semibold bg-gray-50'
+                  : 'text-gray-700 hover:bg-gray-50'
+                  }`}
               >
                 {label}
                 {value === k && <span className="float-right text-gray-900">✓</span>}
@@ -277,11 +275,10 @@ function GuestCard({ g, onEdit }: { g: GuestEntry; onEdit: (g: GuestEntry) => vo
         <p className="text-gray-400 text-xs truncate flex-1">?guest={g.key}&amp;venue={g.venue}</p>
         <button
           onClick={copyLink}
-          className={`shrink-0 text-xs px-3 py-1.5 rounded-lg border transition-colors ${
-            copied
-              ? 'border-green-300 text-green-600 bg-green-50'
-              : 'border-gray-200 text-gray-600 hover:bg-gray-50'
-          }`}
+          className={`shrink-0 text-xs px-3 py-1.5 rounded-lg border transition-colors ${copied
+            ? 'border-green-300 text-green-600 bg-green-50'
+            : 'border-gray-200 text-gray-600 hover:bg-gray-50'
+            }`}
         >
           {copied ? '✓ Đã copy' : 'Copy link'}
         </button>
@@ -482,7 +479,6 @@ export default function AdminPage() {
         {tab === 'Lời chúc' && <WishesTab />}
         {tab === 'Xác nhận' && <ConfirmationsTab />}
         {tab === 'Khách mời' && <GuestsTab />}
-        {tab === 'Địa điểm' && <VenuesTab />}
       </div>
     </div>
   );

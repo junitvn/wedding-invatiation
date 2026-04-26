@@ -36,19 +36,18 @@ export default async function Home({
   const guestName = guestKey ? await fetchGuestName(guestKey) : '';
 
   const venueKey = typeof venue === 'string' ? venue : undefined;
-  const venueConfig = (venueKey && VENUES[venueKey]) ? VENUES[venueKey] : DEFAULT_VENUE;
   const resolvedVenueKey = (venueKey && VENUES[venueKey]) ? venueKey : 'nhatrai';
 
   return (
     <main className="mx-auto bg-white" style={{ maxWidth: '430px', minHeight: '100vh' }}>
       <HeroSection />
-      <InvitationSection guestName={guestName} />
+      <InvitationSection guestName={guestName} venue={VENUES[resolvedVenueKey]} />
       <FamilySection />
       <CeremonySection />
       <CalendarSection />
       {/* <AddressSection venue={venueConfig} /> */}
-      <WishesSection venue={resolvedVenueKey} defaultName={guestName} />
-      <RSVPSection venue={resolvedVenueKey} defaultName={guestName} />
+      <WishesSection venue={resolvedVenueKey} />
+      <RSVPSection venue={resolvedVenueKey} />
 
       <footer className="bg-white text-center py-8 border-t border-gray-100">
         <p

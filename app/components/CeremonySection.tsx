@@ -47,14 +47,14 @@ export default function CeremonySection() {
         >
           LỄ THÀNH HÔN
         </p>
-        <div className="flex justify-center font-sf grid grid-cols-3 w-full uppercase">
+        <div className="flex justify-center font-sf grid tạirid-cols-3 w-full uppercase">
           <div className="flex flex-col items-center justify-center w-full h-full mt-2">
-            <p className="border border-[1px] border-l-0 border-r-0 border-gray-600 text-[#7B1C1C] w-full text-[24px]">Tháng 12</p>
+            <p className="border border-[1px] border-l-0 border-r-0 border-gray-600 text-[#7B1C1C] w-full text-[24px]">Tháng 5</p>
           </div>
           <div className="flex flex-col items-center justify-center w-full h-full">
             <p className="text-[24px] font-light text-[#7B1C1C]">THỨ BẢY</p>
-            <p className="font-bold text-[60px] text-[#7B1C1C]">16</p>
-            <p className="text-[24px] font-normal text-[#7B1C1C]">17:30</p>
+            <p className="font-bold text-[60px] text-[#7B1C1C]">17</p>
+            <p className="text-[24px] font-normal text-[#7B1C1C]">14:30</p>
           </div>
           <div className="flex flex-col items-center justify-center w-full h-full mt-2">
             <p className="border border-l-0 border-r-0 border-gray-600 text-[#7B1C1C] text-[24px] w-full">Năm 2026</p>
@@ -65,7 +65,7 @@ export default function CeremonySection() {
       {/* Lunar date */}
       <div className="text-center mt-4">
         <p className="text-gray-500 font-sf text-sm">
-          Nhằm ngày: 01 tháng 04 năm Bính Ngọ
+          Tức ngày: 01 tháng 04 năm Bính Ngọ
         </p>
       </div>
 
