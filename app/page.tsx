@@ -7,6 +7,7 @@ import AddressSection from './components/AddressSection';
 import WishesSection from './components/WishesSection';
 import RSVPSection from './components/RSVPSection';
 import { GUESTS, VENUES, DEFAULT_VENUE } from './config';
+import HeroSectionVer2 from './components/HeroSectionVer2';
 
 async function fetchGuestName(key: string): Promise<string> {
   const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
@@ -40,7 +41,7 @@ export default async function Home({
 
   return (
     <main className="mx-auto bg-white" style={{ maxWidth: '430px', minHeight: '100vh' }}>
-      <HeroSection />
+      <HeroSectionVer2 />
       <InvitationSection guestName={guestName} venue={VENUES[resolvedVenueKey]} />
       <FamilySection />
       <CeremonySection />

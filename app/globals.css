@@ -3,6 +3,14 @@
 @config "../tailwind.config.ts";
 
 @font-face {
+  font-family: 'Katty Diona';
+  src: url('/fonts/KattyDiona.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'UVN Ke Chuyen';
   src: url('/fonts/UVNKeChuyen3.TTF') format('truetype');
   font-weight: normal;
@@ -67,6 +75,7 @@
 }
 
 @theme {
+  --font-katty: 'Katty Diona', cursive;
   --font-uvn: 'UVN Ke Chuyen', sans-serif;
   --font-ljs: 'Le Jour Script', cursive;
   --font-ljr: 'Le Jour Serif', serif;
@@ -109,4 +118,11 @@ html {
 @keyframes bowSway {
   0%, 100% { transform: rotate(-6deg); }
   50%       { transform: rotate(6deg); }
+}
+
+@keyframes heartFloat {
+  0%   { opacity: 1;   transform: translate(-50%, -50%) translateY(0)     translateX(0)                       scale(1); }
+  20%  {               transform: translate(-50%, -50%) translateY(-18vh)  translateX(calc(var(--dx) * 0.35))  scale(0.95); }
+  60%  { opacity: 0.7; transform: translate(-50%, -50%) translateY(-58vh)  translateX(calc(var(--dx) * 0.75))  scale(0.75); }
+  100% { opacity: 0;   transform: translate(-50%, -50%) translateY(-100vh) translateX(var(--dx))               scale(0.4); }
 }

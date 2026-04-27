@@ -1,0 +1,97 @@
+'use client';
+
+import { useState, useEffect, useRef } from 'react';
+import { imageUrl } from '../lib/image';
+import EnvelopeSection from './EnvelopeSection';
+
+const SONGS = [
+    imageUrl('/music/50_nam_ve_sau.mp3'),
+    imageUrl('/music/love_story.mp3'),
+];
+
+export default function HeroSectionVer2() {
+    const [isPlaying, setIsPlaying] = useState(true);
+    const [songIndex, setSongIndex] = useState(0);
+    const audioRef = useRef<HTMLAudioElement>(null);
+
+    // Attempt autoplay on mount
+    useEffect(() => {
+        audioRef.current?.play()
+            .then(() => setIsPlaying(true))
+            .catch(() => setIsPlaying(false));
+    }, []);
+
+    const toggleMusic = () => {
+        const audio = audioRef.current;
+        if (!audio) return;
+        if (isPlaying) {
+            audio.pause();
+            setIsPlaying(false);
+        } else {
+            audio.play();
+            setIsPlaying(true);
+        }
+    };
+
+    const handleEnded = () => {
+        const next = (songIndex + 1) % SONGS.length;
+        setSongIndex(next);
+    };
+
+    // When song index changes, play next track
+    useEffect(() => {
+        const audio = audioRef.current;
+        if (!audio || !isPlaying) return;
+        audio.load();
+        audio.play().catch(() => { });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [songIndex]);
+
+    return (
+        <section className="relative w-full h-[60vh]">
+            <audio
+                ref={audioRef}
+                src={SONGS[songIndex]}
+                onEnded={handleEnded}
+                preload="auto"
+            />
+
+            {/* Music button — top right */}
+            <div
+                className="absolute top-4 right-4 z-20 cursor-pointer select-none"
+                onClick={toggleMusic}
+                title={isPlaying ? 'Tắt nhạc' : 'Bật nhạc'}
+            >
+                <div className="relative w-8 h-8">
+                    {/* Disc — rotates when playing */}
+                    <div className={`w-8 h-8 rounded-full border border-gold flex items-center justify-center${isPlaying ? ' animate-music-spin' : ''}`}>
+                        <span className="text-gold text-[22px]">♪</span>
+                    </div>
+                    {/* Strikethrough — shown when paused */}
+                    {!isPlaying && (
+                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <div className="w-[120%] h-[1px] bg-gold rotate-45 rounded-full" />
+                        </div>
+                    )}
+                </div>
+            </div>
+
+            <div className="flex items-center justify-center flex-col pt-20">
+                <img src={imageUrl('/images/hoa_cuoi_1.webp')} alt="" className="absolute -left-8 top-[27%] w-24 animate-left rotate-30" />
+                <img src={imageUrl('/images/hoa_cuoi_2.webp')} alt="" className="absolute -right-6 top-[90%] w-20 animate-right -rotate-30" />
+
+                <p className="text-title text-[46px] font-normal font-katty tracking-widest animation-up">
+                    Wedding Invitation
+                </p>
+
+                <div className="mt-8">
+                    <EnvelopeSection onOpen={() => {
+                        if (!isPlaying) {
+                            audioRef.current?.play().then(() => setIsPlaying(true)).catch(() => {});
+                        }
+                    }} />
+                </div>
+            </div>
+        </section>
+    );
+}
