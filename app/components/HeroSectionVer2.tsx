@@ -48,7 +48,7 @@ export default function HeroSectionVer2() {
     }, [songIndex]);
 
     return (
-        <section className="relative w-full h-[60vh]">
+        <section className="relative w-full h-[70vh] min-h-[500px]">
             <audio
                 ref={audioRef}
                 src={SONGS[songIndex]}
@@ -76,18 +76,18 @@ export default function HeroSectionVer2() {
                 </div>
             </div>
 
-            <div className="flex items-center justify-center flex-col pt-20">
-                <img src={imageUrl('/images/hoa_cuoi_1.webp')} alt="" className="absolute -left-8 top-[27%] w-24 animate-left rotate-30" />
-                <img src={imageUrl('/images/hoa_cuoi_2.webp')} alt="" className="absolute -right-6 top-[90%] w-20 animate-right -rotate-30" />
+            <div className="flex items-center justify-center flex-col pt-10">
+                <img src={imageUrl('/images/hoa_cuoi_1.webp')} alt="" className="absolute -left-8 top-[120px] w-24 animate-left rotate-30" />
+                <img src={imageUrl('/images/hoa_cuoi_2.webp')} alt="" className="absolute -right-6 top-[475px] w-20 animate-right -rotate-30" />
 
                 <p className="text-title text-[46px] font-normal font-katty tracking-widest animation-up">
                     Wedding Invitation
                 </p>
 
-                <div className="mt-8">
+                <div className="mt-10">
                     <EnvelopeSection onOpen={() => {
                         if (!isPlaying) {
-                            audioRef.current?.play().then(() => setIsPlaying(true)).catch(() => {});
+                            audioRef.current?.play().then(() => setIsPlaying(true)).catch(() => { });
                         }
                     }} />
                 </div>
