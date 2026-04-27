@@ -42,12 +42,12 @@ export default function CeremonySection() {
           <span className="font-normal tracking-[0.3em] text-[13px] uppercase animation-right" style={{ fontFamily: 'var(--gf-montserrat), sans-serif' }}>WEDDING</span>
         </div>
       </div>
-      <div className="flex justify-center items-center mt-4 relative">
+      <div className="flex justify-center items-center bg-black mt-4 relative">
         <img
           src={imageUrl("/images/film_container.webp")}
           className="w-full"
           alt="" />
-        <div className='absolute top-[19px] px-[39px] z-2 gap-2'>
+        <div className='absolute top-[19px] px-[40px] z-2 gap-2'>
           {FILM_IMAGES.map((img, idx) => {
             return (
               <div key={`container-${idx}`} className='relative'>
