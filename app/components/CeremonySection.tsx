@@ -4,39 +4,72 @@ import { VENUES } from '../config';
 import { imageUrl } from '../lib/image';
 
 export default function CeremonySection() {
+
+  const FILM_IMAGES = [
+    imageUrl('/images/film_1.webp'),
+    imageUrl('/images/film_3.webp'),
+    imageUrl('/images/film_2.webp'),
+  ]
+
+  const TEXT_IN_IMAGES = [
+    "I love three things in this world.",
+    "Sun, Moon, and you.",
+    "Sun for morning, Moon for night, and you forever."
+  ]
+
   return (
-    <section className="bg-white py-12 flex flex-col items-center px-6">
+    <section className="bg-white flex flex-col items-center -mx-2">
       <div className="text-center mb-6">
         <p
-          className="text-[#7B1C1C] text-[32px] tracking-[0.35em] font-sf"
+          className="text-title text-[16px] font-light font-sf whitespace-pre-line"
         >
-          L.O.V.E
+          {
+            `
+            Trái tim anh,
+            Tựa cánh chim nhỏ giữa đồng hoang,
+            Đã tìm thấy bầu trời của riêng mình
+            Trong đôi mắt em.
+            `
+          }
         </p>
       </div>
 
-      {/* Couple image */}
-      <div className="relative w-3/4 aspect-[3/4] bg-gray-200 rounded overflow-hidden mb-6">
+
+      <div className="flex w-full mt-10">
+        <div className="flex w-full justify-between font-sf items-center text-black px-8">
+          <span className="font-normal tracking-[0.3em] text-[13px] uppercase animation-left" style={{ fontFamily: 'var(--gf-montserrat), sans-serif' }}>WELCOME</span>
+          <span className="font-normal tracking-[0.3em] text-[13px] uppercase animation-up" style={{ fontFamily: 'var(--gf-montserrat), sans-serif' }}>TO OUR</span>
+          <span className="font-normal tracking-[0.3em] text-[13px] uppercase animation-right" style={{ fontFamily: 'var(--gf-montserrat), sans-serif' }}>WEDDING</span>
+        </div>
+      </div>
+      <div className="flex justify-center items-center mt-4 relative">
         <img
-          src={imageUrl('/images/ceremony.jpg')}
-          alt="Couple"
-          className="w-full h-full object-cover"
-          onError={(e) => {
-            (e.target as HTMLImageElement).style.display = 'none';
-          }}
-        />
+          src={imageUrl("/images/film_container.webp")}
+          className="w-full"
+          alt="" />
+        <div className='absolute top-[19px] px-[39px] z-2 gap-2'>
+          {FILM_IMAGES.map((img, idx) => {
+            return (
+              <div key={`container-${idx}`} className='relative'>
+                <img
+                  key={`image-${idx}`}
+                  src={img}
+                  className="w-full mt-1 h-[232px]"
+                  alt="" />
+                <p
+                  className='absolute bg-black text-white bottom-0 animate-up left-0 right-0 text-center text-[14px] font-light font-sf tracking-wide leading-relaxed font-sf'>
+                  {TEXT_IN_IMAGES[idx]}
+                </p>
+              </div>
+            )
+          })}
+        </div>
       </div>
 
-      {/* We got married script */}
-      <div className="text-center mb-2">
-        <img
-          src={imageUrl('/images/text_wgm.png')}
-          alt="We got married"
-          className="w-auto h-[32px] object-contain"
-          onError={(e) => {
-            (e.target as HTMLImageElement).style.display = 'none';
-          }}
-        />
+      <div className="bg-black h-20 -mt-1 w-full">
+
       </div>
+
 
       {/* Decorative line */}
       <div className="h-px bg-gray-200 mb-8" />

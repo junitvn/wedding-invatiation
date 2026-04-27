@@ -47,12 +47,11 @@ export default function CalendarSection() {
             </defs>
             <text
               fontSize="18"
-              fontFamily="Montserrat, sans-serif"
               letterSpacing="4"
               fill="white"
               fontWeight="500"
               dy="18"
-              style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.5))' }}
+              style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.5))', fontFamily: 'var(--gf-montserrat), sans-serif' }}
             >
               <textPath href="#archEdge" startOffset="50%" textAnchor="middle">
                 WELCOME TO OUR WEDDING
@@ -76,7 +75,7 @@ export default function CalendarSection() {
                           <span className="relative inline-flex items-center justify-center">
                             <span
                               className="relative text-white font-bold text-[14px]"
-                              style={{ fontFamily: 'Montserrat, sans-serif' }}
+                              style={{ fontFamily: 'var(--gf-montserrat), sans-serif' }}
                             >
                               {day}
                             </span>
@@ -85,7 +84,7 @@ export default function CalendarSection() {
                       ) : (
                         <span
                           className="text-black text-[14px]"
-                          style={{ fontFamily: 'Montserrat, sans-serif' }}
+                          style={{ fontFamily: 'var(--gf-montserrat), sans-serif' }}
                         >
                           {day}
                         </span>

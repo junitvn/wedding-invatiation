@@ -1,12 +1,10 @@
-import HeroSection from './components/HeroSection';
 import InvitationSection from './components/InvitationSection';
-import FamilySection from './components/FamilySection';
+import CoupleSection from './components/CoupleSection';
 import CeremonySection from './components/CeremonySection';
 import CalendarSection from './components/CalendarSection';
-import AddressSection from './components/AddressSection';
 import WishesSection from './components/WishesSection';
 import RSVPSection from './components/RSVPSection';
-import { GUESTS, VENUES, DEFAULT_VENUE } from './config';
+import { GUESTS, VENUES } from './config';
 import HeroSectionVer2 from './components/HeroSectionVer2';
 
 async function fetchGuestName(key: string): Promise<string> {
@@ -40,10 +38,10 @@ export default async function Home({
   const resolvedVenueKey = (venueKey && VENUES[venueKey]) ? venueKey : 'nhatrai';
 
   return (
-    <main className="mx-auto bg-white" style={{ maxWidth: '430px', minHeight: '100vh' }}>
+    <main className="bg-white" style={{ maxWidth: '430px', minHeight: '100vh', overflow: 'hidden' }}>
       <HeroSectionVer2 />
       <InvitationSection guestName={guestName} venue={VENUES[resolvedVenueKey]} />
-      <FamilySection />
+      <CoupleSection />
       <CeremonySection />
       <CalendarSection />
       {/* <AddressSection venue={venueConfig} /> */}
@@ -53,7 +51,7 @@ export default async function Home({
       <footer className="bg-white text-center py-8 border-t border-gray-100">
         <p
           className="text-gray-400 text-xs tracking-widest"
-          style={{ fontFamily: 'Montserrat, sans-serif' }}
+          style={{ fontFamily: 'var(--gf-montserrat), sans-serif' }}
         >
           Ngọc Lâm &amp; Ngọc Bích · 2026
         </p>

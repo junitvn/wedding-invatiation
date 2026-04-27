@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
-@config "../tailwind.config.ts";
 
 @font-face {
   font-family: 'Katty Diona';
@@ -74,15 +72,30 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Signora';
+  src: url('/fonts/1FTV-VIP-Signora-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --font-katty: 'Katty Diona', cursive;
   --font-uvn: 'UVN Ke Chuyen', sans-serif;
   --font-ljs: 'Le Jour Script', cursive;
   --font-ljr: 'Le Jour Serif', serif;
   --font-sf: 'SFU Sigvar', sans-serif;
-
+  --font-sig: 'Signora', cursive;
   --color-gold: #8B6914;
   --color-dark-red: #7B1C1C;
+  --color-title: #1b1b1b;
+  --color-highlight: #7f704f;
+  --animate-left: slide-in-left 0.8s ease-out forwards;
+  --animate-right: slide-in-right 0.8s ease-out forwards;
+  --animate-up: fade-up 0.8s ease-out forwards;
+  --animate-bounce: envelope-bounce 3s ease-in-out infinite;
+  --animate-music-spin: music-spin 4s linear infinite;
 }
 
 :root {
@@ -99,30 +112,128 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--gf-cormorant), serif;
   overflow-x: hidden;
 }
 
 .font-script {
-  font-family: 'Great Vibes', cursive;
+  font-family: var(--gf-great-vibes), cursive;
 }
 
 .font-sans {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--gf-montserrat), sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+@keyframes slide-in-left {
+  0% { transform: translateX(-120%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slide-in-right {
+  0% { transform: translateX(120%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes envelope-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes music-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 @keyframes bowSway {
-  0%, 100% { transform: rotate(-6deg); }
-  50%       { transform: rotate(6deg); }
+
+  0%,
+  100% {
+    transform: rotate(-6deg);
+  }
+
+  50% {
+    transform: rotate(6deg);
+  }
+}
+
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.film-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  position: relative;
+  width: 100%;
+}
+
+.film-wrapper-img {
+  width: 100%;
+}
+
+.film-overlay {
+  position: absolute;
+  top: 18px;
+  padding: 0 36px;
+  z-index: 2;
+}
+
+.film-item {
+  position: relative;
+}
+
+.film-item-img {
+  width: 100%;
+  margin-top: 4px;
+  height: 239px;
+}
+
+.film-item-caption {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 300;
+  font-family: var(--font-sf);
+  letter-spacing: 0.025em;
+  line-height: 1.625;
+  animation: fade-up 0.8s ease-out forwards;
 }
 
 @keyframes heartFloat {
-  0%   { opacity: 1;   transform: translate(-50%, -50%) translateY(0)     translateX(0)                       scale(1); }
-  20%  {               transform: translate(-50%, -50%) translateY(-18vh)  translateX(calc(var(--dx) * 0.35))  scale(0.95); }
-  60%  { opacity: 0.7; transform: translate(-50%, -50%) translateY(-58vh)  translateX(calc(var(--dx) * 0.75))  scale(0.75); }
-  100% { opacity: 0;   transform: translate(-50%, -50%) translateY(-100vh) translateX(var(--dx))               scale(0.4); }
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) translateY(0) translateX(0) scale(1);
+  }
+
+  20% {
+    transform: translate(-50%, -50%) translateY(-18vh) translateX(calc(var(--dx) * 0.35)) scale(0.95);
+  }
+
+  60% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) translateY(-58vh) translateX(calc(var(--dx) * 0.75)) scale(0.75);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) translateY(-100vh) translateX(var(--dx)) scale(0.4);
+  }
 }

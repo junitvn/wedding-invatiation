@@ -1,5 +1,28 @@
 import type { Metadata } from "next";
+import { Cormorant_Garamond, Great_Vibes, Montserrat } from 'next/font/google';
 import "./globals.css";
+
+const cormorantGaramond = Cormorant_Garamond({
+  subsets: ['latin', 'vietnamese'],
+  weight: ['300', '400', '600'],
+  style: ['normal', 'italic'],
+  variable: '--gf-cormorant',
+  display: 'swap',
+});
+
+const greatVibes = Great_Vibes({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--gf-great-vibes',
+  display: 'swap',
+});
+
+const montserrat = Montserrat({
+  subsets: ['latin', 'vietnamese'],
+  weight: ['300', '400', '500', '600'],
+  variable: '--gf-montserrat',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: "Thiệp Cưới · Ngọc Lâm & Ngọc Bích",
@@ -12,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi" className="h-full antialiased">
+    <html lang="vi" className={`h-full antialiased ${cormorantGaramond.variable} ${greatVibes.variable} ${montserrat.variable}`}>
       <head>
         <meta name="color-scheme" content="light" />
         {/* Preload local fonts to prevent FOUT */}
@@ -25,9 +48,6 @@ export default function RootLayout({
         <link rel="preload" href="/fonts/SFU Sigvar/SFUSigvarDemiBold.TTF" as="font" type="font/ttf" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/SFU Sigvar/SFUSigvarRegularItalic.TTF" as="font" type="font/ttf" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/SFU Sigvar/SFUSigvarDemiBoldItalic_.TTF" as="font" type="font/ttf" crossOrigin="anonymous" />
-        {/* Preconnect for Google Fonts */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="min-h-full bg-gray-100 flex flex-col items-center">
         {children}

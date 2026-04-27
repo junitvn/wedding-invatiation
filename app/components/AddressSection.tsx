@@ -30,7 +30,7 @@ export default function AddressSection({ venue }: { venue: VenueConfig }) {
           <p className="text-[#7B1C1C] font-bold text-[13px] tracking-widest text-center font-sf">
             {venue.title}
           </p>
-          <p className="text-gray-500 text-[12px] text-center" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <p className="text-gray-500 text-[12px] text-center" style={{ fontFamily: 'var(--gf-montserrat), sans-serif' }}>
             {venue.address}
           </p>
 

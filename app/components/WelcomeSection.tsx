@@ -23,8 +23,7 @@ export default function WelcomeSection() {
           <text
             fill="white"
             fontSize="26"
-            fontFamily="Great Vibes, cursive"
-            style={{ filter: 'drop-shadow(0 2px 5px rgba(0,0,0,0.55))' }}
+            style={{ filter: 'drop-shadow(0 2px 5px rgba(0,0,0,0.55))', fontFamily: 'var(--gf-great-vibes), cursive' }}
           >
             <textPath href="#topArc" startOffset="50%" textAnchor="middle">
               Welcome to our wedding

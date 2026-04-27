@@ -68,10 +68,10 @@ export default function EnvelopeSection({ onOpen }: { onOpen?: () => void }) {
           }}
         >
           <img
-            src={imageUrl('/images/hero.jpg')}
+            src={imageUrl('/images/ngang_2.webp')}
             alt="Wedding"
             style={{ zIndex: 4 }}
-            className="w-[90%] h-full object-cover object-top"
+            className="w-[97%] h-full object-cover object-top"
           />
         </div>
 
@@ -87,7 +87,6 @@ export default function EnvelopeSection({ onOpen }: { onOpen?: () => void }) {
                   top: SEAL_TOP,
                   '--dx': `${h.dx}px`,
                   animation: `heartFloat 4.8s ease-out ${1.8 + h.delay}s forwards`,
-                  color: '#f8063fff',
                   lineHeight: 1,
                 } as React.CSSProperties}
               >
