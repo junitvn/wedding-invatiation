@@ -1,11 +1,15 @@
 'use client';
 
+import { motion, type Transition } from 'framer-motion';
 import { VENUES } from '../config';
 import { imageUrl } from '../lib/image';
 
 const WEDDING_DAY = 17;
 const MONTH_DAYS = 31;
 const FIRST_DAY_OF_WEEK = 4; // May 1 2026 = Friday (Mon=0)
+
+const VP = { once: true, amount: 0.1 };
+const T: Transition = { duration: 0.8, ease: 'easeOut' };
 
 export default function SaveTheDateSection() {
   const cells: (number | null)[] = [];
@@ -20,20 +24,28 @@ export default function SaveTheDateSection() {
     <section className="bg-white py-10 px-6 flex flex-col items-center">
       {/* Gold heart */}
       <div className="flex justify-center mb-16">
-        <img
+        <motion.img
           src={imageUrl('/images/heart_gold.png')}
           alt=""
-          className="w-8 h-8 object-contain animate-up"
+          className="w-8 h-8 object-contain"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={VP}
+          transition={T}
           onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
         />
       </div>
 
       {/* SAVE THE DATE */}
-      <h2
-        className="text-center text-[32px] tracking-[0.12em] text-gold leading-none mb-8 font-katty animate-up"
+      <motion.h2
+        className="text-center text-[32px] tracking-[0.12em] text-gold leading-none mb-8 font-katty"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={VP}
+        transition={T}
       >
         SAVE THE DATE
-      </h2>
+      </motion.h2>
 
       {/* Polaroid / film card */}
       <div
@@ -47,16 +59,26 @@ export default function SaveTheDateSection() {
         <div className="p-4 pb-0">
           {/* Photo with calendar overlay */}
           <div className="relative overflow-hidden">
-            <img
+            <motion.img
               src={imageUrl('/images/welcome.jpg')}
               alt="Wedding"
-              className="w-full object-cover min-h-[455px] animate-up"
+              className="w-full object-cover min-h-[455px]"
               style={{ aspectRatio: '3/4' }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={VP}
+              transition={T}
               onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
             />
 
             {/* Calendar overlay on photo */}
-            <div className="absolute bottom-0 left-0 right-0 px-3 pt-3 pb-3 animate-up">
+            <motion.div
+              className="absolute bottom-0 left-0 right-0 px-3 pt-3 pb-3"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={VP}
+              transition={T}
+            >
               {weeks.map((week, wi) => (
                 <div key={wi} className="grid grid-cols-7">
                   {week.map((day, di) => (
@@ -85,66 +107,33 @@ export default function SaveTheDateSection() {
                   ))}
                 </div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
 
         <div className="py-5 text-center">
-          <p
-            className="text-white text-[20px] tracking-wide font-sf animate-up"
+          <motion.p
+            className="text-white text-[20px] tracking-wide font-sf"
             style={{ fontStyle: 'italic' }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VP}
+            transition={T}
           >
             Chủ Nhật, 17/05/2026
-          </p>
-          <p
-            className="text-white text-[15px] tracking-wide font-sf mt-1 animate-up"
+          </motion.p>
+          <motion.p
+            className="text-white text-[15px] tracking-wide font-sf mt-1"
             style={{ fontStyle: 'italic' }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VP}
+            transition={{ ...T, delay: 0.1 }}
           >
             Âm lịch 01/04 | 14:30
-          </p>
+          </motion.p>
         </div>
       </div>
-
-      {/* <div className="h-px bg-gray-200 mb-8 mt-8" />
-
-      <div className="text-center mb-4 w-full">
-        <p
-          className="tracking-[0.25em] text-title text-[24px] font-sf mb-4"
-        >
-          LỄ THÀNH HÔN
-        </p>
-        <div className="flex justify-center font-sf grid grid-cols-3 w-full uppercase">
-          <div className="flex flex-col items-center justify-center w-full h-full mt-2">
-            <p className="border border-[1px] border-l-0 border-r-0 border-gray-600 text-gold w-full text-[24px]">Tháng 5</p>
-          </div>
-          <div className="flex flex-col items-center justify-center w-full h-full">
-            <p className="text-[24px] font-light text-gold">CHỦ NHẬT</p>
-            <p className="font-bold text-[60px] text-gold">17</p>
-            <p className="text-[24px] font-normal text-gold">14:30</p>
-          </div>
-          <div className="flex flex-col items-center justify-center w-full h-full mt-2">
-            <p className="border border-l-0 border-r-0 border-gray-600 text-gold text-[24px] w-full">Năm 2026</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="text-center mt-4">
-        <p className="text-title font-sf text-sm">
-          Tức ngày: 01 tháng 04 năm Bính Ngọ
-        </p>
-      </div>
-
-      <p className="mt-10 text-title text-[16px] font-normal font-sf uppercase">
-        Hôn lễ được cử hành tại
-      </p>
-      <p className="my-4 text-gold text-[24px] font-normal font-sf uppercase">
-        {VENUES.nhatrai.title}
-      </p>
-      <p className="text-title text-[16px] font-normal text-center whitespace-pre-line font-sf">
-        {VENUES.nhatrai.textAddress}
-      </p>
-
-      <div className="h-px bg-gray-200 mt-8" /> */}
     </section>
   );
 }

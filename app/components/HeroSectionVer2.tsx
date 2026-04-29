@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { motion, type Transition } from 'framer-motion';
 import { imageUrl } from '../lib/image';
 import EnvelopeSection from './EnvelopeSection';
 
@@ -8,6 +9,9 @@ const SONGS = [
     imageUrl('/music/50_nam_ve_sau.mp3'),
     imageUrl('/music/love_story.mp3'),
 ];
+
+const VP = { once: true, amount: 0.1 };
+const T: Transition = { duration: 0.8, ease: 'easeOut' };
 
 export default function HeroSectionVer2() {
     const [isPlaying, setIsPlaying] = useState(true);
@@ -76,21 +80,49 @@ export default function HeroSectionVer2() {
                 </div>
             </div>
 
-            <div className="flex items-center justify-center flex-col pt-10">
-                <img src={imageUrl('/images/hoa_cuoi_1.webp')} alt="" className="absolute -left-8 top-[120px] w-24 animate-left rotate-30" />
-                <img src={imageUrl('/images/hoa_cuoi_2.webp')} alt="" className="absolute -right-6 top-[475px] w-20 animate-right -rotate-30" />
+            <div className="flex items-center justify-center w-full flex-col pt-10">
+                <motion.img
+                    src={imageUrl('/images/hoa_cuoi_1.webp')}
+                    alt=""
+                    className="absolute left-0 top-[120px] w-24 rotate-30"
+                    initial={{ opacity: 0, x: '-100%' }}
+                    whileInView={{ opacity: 1, x: -40 }}
+                    viewport={VP}
+                    transition={T}
+                />
+                <motion.img
+                    src={imageUrl('/images/hoa_cuoi_2.webp')}
+                    alt=""
+                    className="absolute right-0 top-[475px] w-20 -rotate-35"
+                    initial={{ opacity: 0, x: '120%' }}
+                    whileInView={{ opacity: 1, x: 29 }}
+                    viewport={VP}
+                    transition={T}
+                />
 
-                <p className="text-title text-[46px] font-normal font-katty tracking-widest animate-up">
+                <motion.p
+                    className="text-title text-[46px] font-normal font-katty tracking-widest"
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={VP}
+                    transition={T}
+                >
                     Wedding Invitation
-                </p>
+                </motion.p>
 
-                <div className="mt-10 animate-up">
+                <motion.div
+                    className="mt-10"
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={VP}
+                    transition={T}
+                >
                     <EnvelopeSection onOpen={() => {
                         if (!isPlaying) {
                             audioRef.current?.play().then(() => setIsPlaying(true)).catch(() => { });
                         }
                     }} />
-                </div>
+                </motion.div>
             </div>
         </section>
     );

@@ -1,63 +1,114 @@
+'use client';
+
+import { motion, type Transition } from 'framer-motion';
 import { DEFAULT_VENUE, VenueConfig } from '../config';
+
+const VP = { once: true, amount: 0.1 };
+const T: Transition = { duration: 0.8, ease: 'easeOut' };
 
 export default function InvitationSection({ guestName, venue = DEFAULT_VENUE }: { guestName?: string; venue?: VenueConfig }) {
   return (
     <section className="bg-white py-8 px-6 text-center">
-      <p className="text-title text-[12px] font-light font-sf uppercase mb-2 animate-up">Trân trọng kính mời</p>
+      <motion.p
+        className="text-title text-[12px] font-light font-sf uppercase mb-2"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={VP}
+        transition={T}
+      >Trân trọng kính mời</motion.p>
 
       {/* Blank name line */}
-      <div className="border-b border-gray-400 mx-auto min-w-fit w-[80%] mb-4 animate-up">
-        {guestName && <p className="text-gold text-[28px] font-light font-uvn">{guestName}</p>}
-      </div>
-
-      <p className="text-title text-[12px] font-light font-sf mb-4 uppercase whitespace-pre-line animate-up">{`đến dự bữa tiệc chung vui\ncùng gia đình chúng tôi vào lúc`}</p>
-
-      <p
-        className="uppercase tracking-[0.2em] text-highlight text-[16px] font-sf font-light mb-1 animate-up"
+      <motion.div
+        className="border-b border-gray-400 mx-auto min-w-fit w-[80%] mb-4"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={VP}
+        transition={T}
       >
-        <span
-          className="uppercase tracking-[0.2em] font-sf font-light mb-1 mr-1"
-        >
-          17:30,
-        </span>
+        {guestName && <p className="text-gold text-[28px] font-light font-uvn">{guestName}</p>}
+      </motion.div>
+
+      <motion.p
+        className="text-title text-[12px] font-light font-sf mb-4 uppercase whitespace-pre-line"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={VP}
+        transition={T}
+      >{`đến dự bữa tiệc chung vui\ncùng gia đình chúng tôi vào lúc`}</motion.p>
+
+      <motion.p
+        className="uppercase tracking-[0.2em] text-highlight text-[16px] font-sf font-light mb-1"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={VP}
+        transition={T}
+      >
+        <span className="uppercase tracking-[0.2em] font-sf font-light mb-1 mr-1">17:30,</span>
         Thứ 7
-      </p>
-      <p
-        className="text-gold text-[32px] font-semibold tracking-[0.2em] mt-2 font-sf animate-up"
+      </motion.p>
+      <motion.p
+        className="text-gold text-[32px] font-semibold tracking-[0.2em] mt-2 font-sf"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={VP}
+        transition={T}
       >
         16.05.2026
-      </p>
-      <p
-        className="text-title text-[14px] font-normal mt-2 font-sf animate-up"
+      </motion.p>
+      <motion.p
+        className="text-title text-[14px] font-normal mt-2 font-sf"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={VP}
+        transition={T}
       >
         (Tức ngày 30 tháng 3 năm Bính Ngọ)
-      </p>
-
+      </motion.p>
 
       {/* Decorative lines */}
-      <div className="flex items-center justify-center gap-3 mt-3 animate-up">
+      <motion.div
+        className="flex items-center justify-center gap-3 mt-3"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={VP}
+        transition={T}
+      >
         <div className="h-px w-16 bg-gray-300" />
         <div className="w-1.5 h-1.5 rounded-full bg-[#7B1C1C]" />
         <div className="h-px w-16 bg-gray-300" />
-      </div>
+      </motion.div>
 
-
-      <p className="mt-6 text-title text-[16px] font-normal font-sf animate-up">
+      <motion.p
+        className="mt-6 text-title text-[16px] font-normal font-sf"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={VP}
+        transition={T}
+      >
         Tại: {venue.title}
-      </p>
-      <p className="mt-2 text-gold text-[16px] font-normal font-sf animate-up">
+      </motion.p>
+      <motion.p
+        className="mt-2 text-gold text-[16px] font-normal font-sf"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={VP}
+        transition={T}
+      >
         Địa chỉ: <span className="text-gold whitespace-pre-line text-[16px] font-normal font-sf">{venue.textAddress}</span>
-      </p>
+      </motion.p>
 
-      <a
+      <motion.a
         href={venue.mapSrc}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex justify-center mt-4 px-5 pb-2 pt-1 rounded-[20px] border border-gold text-white bg-gold text-[14px] font-sf font-normal tracking-wide hover:bg-gold hover:text-white transition-colors animate-up"
+        className="inline-flex justify-center mt-4 px-5 pb-2 pt-1 rounded-[20px] border border-gold text-white bg-gold text-[14px] font-sf font-normal tracking-wide hover:bg-gold hover:text-white transition-colors"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={VP}
+        transition={T}
       >
         Xem đường đi
-      </a>
-
+      </motion.a>
     </section>
   );
 }

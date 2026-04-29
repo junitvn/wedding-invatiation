@@ -91,10 +91,6 @@
   --color-dark-red: #7B1C1C;
   --color-title: #1b1b1b;
   --color-highlight: #7f704f;
-  --animate-down: fade-down 0.8s ease-out forwards;
-  --animate-left: slide-in-left 0.8s ease-out forwards;
-  --animate-right: slide-in-right 0.8s ease-out forwards;
-  --animate-up: fade-up 0.8s ease-out forwards;
   --animate-bounce: envelope-bounce 3s ease-in-out infinite;
   --animate-music-spin: music-spin 4s linear infinite;
 }
@@ -211,21 +207,6 @@ html {
   }
 }
 
-@utility animation-up {
-  animation: fade-up 0.8s ease-out forwards;
-}
-
-@utility animation-down {
-  animation: fade-down 0.8s ease-out forwards;
-}
-
-@utility animation-left {
-  animation: slide-in-left 0.8s ease-out forwards;
-}
-
-@utility animation-right {
-  animation: slide-in-right 0.8s ease-out forwards;
-}
 
 .film-wrapper {
   display: flex;

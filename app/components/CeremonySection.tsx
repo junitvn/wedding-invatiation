@@ -1,10 +1,14 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { motion, type Transition } from 'framer-motion';
 import { VENUES } from '../config';
 import { imageUrl } from '../lib/image';
 
 const WEDDING_TIMESTAMP = new Date('2026-05-17T14:30:00+07:00').getTime();
+
+const VP = { once: true, amount: 0.1 };
+const T: Transition = { duration: 0.8, ease: 'easeOut' };
 
 function useCountdown() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -46,8 +50,6 @@ export default function CeremonySection() {
     "Sun for morning, Moon for night, and you forever."
   ]
 
-  const WEDDING_DATE = '14:30 Chủ Nhật 17 Tháng 5 Năm 2026';
-
   return (
     <section className="bg-white flex flex-col items-center -mx-2">
       <div className="text-center mb-6">
@@ -65,12 +67,35 @@ export default function CeremonySection() {
         </p>
       </div>
 
-
       <div className="flex w-full mt-10">
         <div className="flex w-full justify-between font-sf items-center text-black px-8">
-          <span className="font-normal tracking-[0.3em] text-[13px] uppercase animate-left" style={{ fontFamily: 'var(--gf-montserrat), sans-serif' }}>WELCOME</span>
-          <span className="font-normal tracking-[0.3em] text-[13px] uppercase animate-down" style={{ fontFamily: 'var(--gf-montserrat), sans-serif' }}>TO OUR</span>
-          <span className="font-normal tracking-[0.3em] text-[13px] uppercase animate-right" style={{ fontFamily: 'var(--gf-montserrat), sans-serif' }}>WEDDING</span>
+          <motion.span
+            className="font-normal tracking-[0.3em] text-[13px] uppercase"
+            style={{ fontFamily: 'var(--gf-montserrat), sans-serif' }}
+            initial={{ opacity: 0, x: '-40%' }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={VP}
+            transition={T}
+          >
+            WELCOME
+          </motion.span>
+          <motion.span
+            className="font-normal tracking-[0.3em] text-[13px] uppercase"
+            style={{ fontFamily: 'var(--gf-montserrat), sans-serif' }}
+            initial={{ opacity: 0, y: -40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VP}
+            transition={T}
+          >TO OUR</motion.span>
+          <motion.span
+            className="font-normal tracking-[0.3em] text-[13px] uppercase"
+            style={{ fontFamily: 'var(--gf-montserrat), sans-serif' }}
+            initial={{ opacity: 0, x: '40%' }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={VP}
+            transition={T}
+          >WEDDING
+          </motion.span>
         </div>
       </div>
       <div className="flex justify-center items-center bg-black mt-4 relative w-full">
@@ -87,10 +112,15 @@ export default function CeremonySection() {
                   src={img}
                   className="w-full mt-1 h-[232px] object-cover"
                   alt="" />
-                <p
-                  className='absolute bg-black text-white bottom-0 left-0 right-0 text-center h-8 pt-1 text-[14px] font-light font-sf tracking-wide leading-relaxed font-sf animate-up'>
+                <motion.p
+                  className='absolute bg-black text-white bottom-0 left-0 right-0 text-center h-8 pt-1 text-[14px] font-light font-sf tracking-wide leading-relaxed'
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={VP}
+                  transition={{ ...T, delay: idx * 0.1 }}
+                >
                   {TEXT_IN_IMAGES[idx]}
-                </p>
+                </motion.p>
               </div>
             )
           })}
@@ -110,9 +140,6 @@ export default function CeremonySection() {
           </div>
         ))}
       </div>
-
-
-
     </section>
   );
 }

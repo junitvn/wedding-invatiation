@@ -8,7 +8,7 @@ import WishesSection from './components/WishesSection';
 import RSVPSection from './components/RSVPSection';
 import { GUESTS, VENUES } from './config';
 import HeroSectionVer2 from './components/HeroSectionVer2';
-import { imageUrl } from './lib/image';
+import PageFooter from './components/PageFooter';
 
 async function fetchGuestName(key: string): Promise<string> {
   const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
@@ -51,14 +51,7 @@ export default async function Home({
       {/* <WishesSection venue={resolvedVenueKey} /> */}
       <RSVPSection venue={resolvedVenueKey} />
 
-      <footer className="bg-white text-center flex flex-col items-center justify-center pt-16 pb-6 gap-16 ">
-        <img src={imageUrl('/images/thanks.webp')} className='w-[80px] animate-up' alt="" />
-        <p
-          className="text-gold text-[32px] tracking-widest font-uvn animate-up"
-        >
-          Thank you
-        </p>
-      </footer>
+      <PageFooter />
     </main>
   );
 }
