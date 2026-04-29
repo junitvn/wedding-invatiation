@@ -120,7 +120,7 @@ export default function SaveTheDateSection() {
 
         <div className="absolute bottom-0 left-0 right-0 py-3 text-center">
           <motion.p
-            className="text-white text-[20px] tracking-wide font-sf"
+            className="text-white text-[18px] tracking-wide font-sf"
             style={{ fontStyle: 'italic' }}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -130,7 +130,7 @@ export default function SaveTheDateSection() {
             Chủ Nhật, 17/05/2026
           </motion.p>
           <motion.p
-            className="text-white text-[15px] tracking-wide font-sf mt-1"
+            className="text-white text-[12px] tracking-wide font-sf mt-1"
             style={{ fontStyle: 'italic' }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

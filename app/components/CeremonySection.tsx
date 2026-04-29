@@ -54,23 +54,24 @@ export default function CeremonySection() {
     <section className="bg-white flex flex-col items-center -mx-2">
       <div className="text-center mb-6">
         <p
-          className="text-title text-[16px] font-light font-sf whitespace-pre-line"
+          className="text-title text-[14px] font-light font-sf whitespace-pre-line"
         >
           {
             `
-            Trái tim anh,
-            Tựa cánh chim nhỏ giữa đồng hoang,
-            Đã tìm thấy bầu trời của riêng mình
-            Trong đôi mắt em.
+            Giữa hàng triệu con người, em gặp được anh
+            Giữa hàng triệu năm, 
+            Trong hoang mạc vô tận của thời gian 
+            Không sớm một bước, cũng không muộn một bước 
+            Chúng ta – vừa hay gặp nhau.
             `
           }
         </p>
       </div>
 
       <div className="flex w-full mt-10">
-        <div className="flex w-full justify-between font-sf items-center text-black px-8">
+        <div className="flex w-full justify-between font-sf items-center text-black px-6">
           <motion.span
-            className="font-normal tracking-[0.3em] text-[13px] uppercase"
+            className="font-normal tracking-[0.3em] text-[11px] uppercase"
             style={{ fontFamily: 'var(--gf-montserrat), sans-serif' }}
             initial={{ opacity: 0, x: '-40%' }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -98,7 +99,7 @@ export default function CeremonySection() {
           </motion.span>
         </div>
       </div>
-      <div className="flex justify-center items-center bg-black mt-4 relative w-full">
+      <div className="flex justify-center items-center bg-black mt-1 relative w-full">
         <img
           src={imageUrl("/images/film_container.webp")}
           className="w-screen"

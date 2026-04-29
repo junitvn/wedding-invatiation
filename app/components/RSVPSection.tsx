@@ -46,7 +46,7 @@ export default function RSVPSection({ venue, defaultName }: { venue: string; def
   return (
     <section className="py-12 px-6">
       <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-sm px-6 py-8">
-        <h2 className="text-gray-900 text-[20px] font-semibold font-sf mb-6 text-center">
+        <h2 className="text-gold text-[20px] font-normal font-sf mb-6 text-center">
           Xác nhận tham dự
         </h2>
 
@@ -83,7 +83,7 @@ export default function RSVPSection({ venue, defaultName }: { venue: string; def
               className="w-5 h-5 mt-0.5 accent-blue-500"
             />
             <span className="text-gray-700 text-[14px] font-sf">
-              Tôi bạn, rất tiếc không thể tham dự
+              Tôi bận, rất tiếc không thể tham dự :'(
             </span>
           </label>
         </div>

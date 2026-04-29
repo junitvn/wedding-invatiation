@@ -85,7 +85,7 @@ export default function CoupleSection() {
 
       <div className="flex flex-col items-center mt-16 gap-10 mb-10">
         <img className="h-[24px]" src={imageUrl("/images/heart_gold.png")} alt="" />
-        <span className="text-[40px] font-uvn text-gold">My Lover</span>
+        <span className="text-[48px] font-katty text-gold">My Lover</span>
       </div>
 
       {/* Couple photos */}
@@ -116,7 +116,7 @@ export default function CoupleSection() {
             transition={T}
           >
             <div className="w-[1px] h-[32px] mt-[20px] bg-[#C0A062]" />
-            <p className="text-[#C0A062] font-uvn text-[28px]">
+            <p className="text-[#C0A062] font-katty font-normal text-[32px]">
               Ngọc Lâm
             </p>
           </motion.div>
@@ -148,7 +148,7 @@ export default function CoupleSection() {
             transition={T}
           >
             <div className="w-[1px] h-[32px] mt-[20px] bg-[#C0A062]" />
-            <p className="text-[#C0A062] font-funky text-[28px]">
+            <p className="text-[#C0A062] font-katty text-[32px]">
               Ngọc Bích
             </p>
           </motion.div>

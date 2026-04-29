@@ -11,13 +11,14 @@ export default function PhotosSection() {
         <section className="bg-white pt-12 pb-16 flex justify-center items-center flex-col overflow-hidden">
             {/* Top quote */}
             <motion.span
-                className="px-10 text-title text-[14px] font-light font-sf leading-loose mb-16 whitespace-pre-line"
+                className="px-10 text-title text-[14px] font-light text-center font-sf leading-loose mb-16 whitespace-pre-line"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={VP}
                 transition={T}
             >
-                {`Có lẽ thế gian này có vô vàn điều tươi đẹp,\nNhưng trong lòng em, đẹp nhất vẫn chỉ có anh`}
+                {`Có lẽ thế gian này có vô vàn điều tươi đẹp
+                Nhưng trong lòng em, đẹp nhất vẫn chỉ có anh`}
             </motion.span>
 
             {/* Collage — pb creates space for the overflowing sticker and text */}
@@ -87,8 +88,8 @@ export default function PhotosSection() {
 
                 {/* I LOVE YOU */}
                 <motion.p
-                    className="absolute bottom-[0%] right-1 text-gold font-katty text-[40px] leading-none text-right"
-                    initial={{ opacity: 0, x: '120%' }}
+                    className="absolute bottom-[0%] right-10 text-gold font-katty text-[40px] leading-none text-right"
+                    initial={{ opacity: 0, x: '20%' }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={VP}
                     transition={T}

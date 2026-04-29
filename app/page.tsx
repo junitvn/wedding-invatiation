@@ -62,8 +62,8 @@ export default async function Home({ searchParams }: PageProps) {
       <CeremonySection />
       <PhotosSection />
       <SaveTheDateSection />
-      {/* <WishesSection venue={resolvedVenueKey} /> */}
-      <RSVPSection venue={resolvedVenueKey} />
+      <RSVPSection defaultName={guestName || ''} venue={resolvedVenueKey} />
+      {/* GiftBoxSection */}
       <PageFooter />
     </main>
   );

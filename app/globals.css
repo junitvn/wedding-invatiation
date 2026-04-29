@@ -1,14 +1,6 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: 'Katty Diona';
-  src: url('/fonts/KattyDiona.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
   font-family: 'UVN Ke Chuyen';
   src: url('/fonts/UVNKeChuyen3.TTF') format('truetype');
   font-weight: normal;
@@ -81,22 +73,22 @@
 }
 
 @font-face {
-  font-family: 'funky';
-  src: url('/fonts/funky.ttf') format('truetype');
+  font-family: 'Katty';
+  src: url('/fonts/1FTV-VIP-Katty-Diona.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 
+
 @theme {
-  --font-katty: 'Katty Diona', cursive;
+  --font-katty: 'Katty', cursive;
   --font-uvn: 'UVN Ke Chuyen', sans-serif;
   --font-ljs: 'Le Jour Script', cursive;
   --font-ljr: 'Le Jour Serif', serif;
   --font-sf: 'SFU Sigvar', sans-serif;
   --font-sig: 'Signora', cursive;
-  --font-funky: 'funky', cursive;
   --color-gold: #8B6914;
   --color-dark-red: #7B1C1C;
   --color-title: #1b1b1b;
