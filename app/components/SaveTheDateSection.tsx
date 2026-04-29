@@ -49,21 +49,25 @@ export default function SaveTheDateSection() {
 
       {/* Polaroid / film card */}
       <div
-        className="mx-auto rounded-sm overflow-hidden"
-        style={{
-          backgroundImage: `url(${imageUrl('/images/cal_container.png')})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
+        className="w-full rounded-sm overflow-hidden relative"
       >
-        <div className="p-4 pb-0">
+        <motion.img
+          src={imageUrl('/images/cal_container.png')}
+          alt="Wedding"
+          className="w-full object-cover"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={VP}
+          transition={T}
+          onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+        />
+        <div className="absolute top-0 left-0 right-4 w-full z-1 object-cover">
           {/* Photo with calendar overlay */}
-          <div className="relative overflow-hidden">
+          <div className="relative flex pt-4 justify-center items-center overflow-hidden">
             <motion.img
               src={imageUrl('/images/welcome.jpg')}
               alt="Wedding"
-              className="w-full object-cover min-h-[455px]"
-              style={{ aspectRatio: '3/4' }}
+              className="w-[90%] h-[400px] object-cover mx-2"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={VP}
@@ -111,7 +115,7 @@ export default function SaveTheDateSection() {
           </div>
         </div>
 
-        <div className="py-5 text-center">
+        <div className="absolute bottom-0 left-0 right-0 py-3 text-center">
           <motion.p
             className="text-white text-[20px] tracking-wide font-sf"
             style={{ fontStyle: 'italic' }}

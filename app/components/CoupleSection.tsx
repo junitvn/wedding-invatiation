@@ -20,7 +20,8 @@ export default function CoupleSection() {
       >
         {`
         Gửi đến bạn tấm thiệp cưới đầy yêu thương.
-        Những ai nhận được lời mời này đều là những người đặc biệt với bọn mình.
+        Những ai nhận được lời mời này đều là những người 
+        đặc biệt với bọn mình.
         Mong bạn và gia đình sẽ đến chung vui,
         Cùng chứng kiến khoảnh khắc hạnh phúc nhất của hai đứa.
         Cảm ơn vì luôn bên cạnh và yêu thương.
@@ -63,7 +64,7 @@ export default function CoupleSection() {
           <img
             src={imageUrl('/images/ngang_1.webp')}
             alt="Fall in love wedding"
-            className="w-full object-cover h-auto"
+            className="w-full object-cover h-[225px] -mt-1"
             onError={(e) => {
               (e.target as HTMLImageElement).style.display = 'none';
             }}

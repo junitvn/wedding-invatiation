@@ -110,10 +110,10 @@ export default function CeremonySection() {
                 <img
                   key={`image-${idx}`}
                   src={img}
-                  className="w-full mt-1 h-[232px] object-cover"
+                  className="w-full mt-1 h-[100%] object-cover"
                   alt="" />
                 <motion.p
-                  className='absolute bg-black text-white bottom-0 left-0 right-0 text-center h-8 pt-1 text-[14px] font-light font-sf tracking-wide leading-relaxed'
+                  className='absolute bg-black text-white bottom-0 left-0 right-0 text-center h-8 pt-1 text-[12px] font-light font-sf tracking-wide leading-relaxed'
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={VP}

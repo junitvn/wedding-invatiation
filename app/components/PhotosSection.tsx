@@ -23,7 +23,7 @@ export default function PhotosSection() {
             {/* Collage — pb creates space for the overflowing sticker and text */}
             <div className="relative pb-[20%] w-full flex">
                 {/* Left vertical labels */}
-                <div className="absolute left-[68px] top-14 z-10 flex flex-col gap-[48px]">
+                <div className="absolute left-1/6 top-4 z-10 flex flex-col gap-[32px]">
                     <motion.span
                         className="text-gold text-[10px] tracking-[0.3em] uppercase mt-4"
                         style={{
@@ -39,7 +39,7 @@ export default function PhotosSection() {
                         My Love
                     </motion.span>
                     <motion.span
-                        className="text-gold text-[10px] mt-10 tracking-[0.3em] uppercase"
+                        className="text-gold text-[10px] mt-4 tracking-[0.3em] uppercase"
                         style={{
                             fontFamily: 'var(--gf-montserrat), sans-serif',
                             writingMode: 'vertical-rl',
