@@ -63,11 +63,12 @@ export default function SaveTheDateSection() {
         />
         <div className="absolute top-0 left-0 right-4 w-full z-1 object-cover">
           {/* Photo with calendar overlay */}
-          <div className="relative flex pt-4 justify-center items-center overflow-hidden">
+          <div className="relative flex justify-center pt-4 items-center overflow-hidden">
             <motion.img
               src={imageUrl('/images/welcome.jpg')}
               alt="Wedding"
-              className="w-[90%] h-[400px] object-cover mx-2"
+              className="w-[90%] object-cover mx-2"
+              style={{ aspectRatio: '0.7' }}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={VP}
@@ -75,9 +76,11 @@ export default function SaveTheDateSection() {
               onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
             />
 
+            <div className=' absolute top-0 right-0 w-full h-full bg-black/20 z-0' />
+
             {/* Calendar overlay on photo */}
             <motion.div
-              className="absolute bottom-0 left-0 right-0 px-3 pt-3 pb-3"
+              className="absolute bottom-0 left-0 right-0 px-3 pt-3 pb-3 z-10"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={VP}

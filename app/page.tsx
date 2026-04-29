@@ -64,7 +64,6 @@ export default async function Home({ searchParams }: PageProps) {
       <SaveTheDateSection />
       {/* <WishesSection venue={resolvedVenueKey} /> */}
       <RSVPSection venue={resolvedVenueKey} />
-
       <PageFooter />
     </main>
   );

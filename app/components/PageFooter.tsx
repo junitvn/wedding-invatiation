@@ -8,7 +8,7 @@ const T: Transition = { duration: 0.8, ease: 'easeOut' };
 
 export default function PageFooter() {
   return (
-    <footer className="bg-white text-center flex flex-col items-center justify-center pt-16 pb-6 gap-16">
+    <footer className="bg-white text-center flex flex-col items-center justify-center pt-16 pb-10 gap-16">
       <motion.img
         src={imageUrl('/images/thanks.webp')}
         className="w-[80px]"
@@ -25,7 +25,7 @@ export default function PageFooter() {
         viewport={VP}
         transition={{ ...T, delay: 0.1 }}
       >
-        Thank you
+        Thank you!
       </motion.p>
     </footer>
   );
