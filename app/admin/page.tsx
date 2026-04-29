@@ -452,10 +452,10 @@ export default function AdminPage() {
   if (!authed) return <Login onAuth={() => setAuthed(true)} />;
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen w-full bg-gray-50">
       <header className="bg-white border-b border-gray-200 px-4 py-4 flex justify-between items-center sticky top-0 z-10">
-        <h1 className="text-gray-900 text-base font-semibold">Admin · Thiệp cưới</h1>
-        <button onClick={() => setAuthed(false)} className="text-gray-400 text-sm hover:text-gray-600">
+        <h1 className="text-gold text-base font-semibold">Thiệp cưới</h1>
+        <button onClick={() => setAuthed(false)} className="text-title text-sm hover:text-gray-600">
           Đăng xuất
         </button>
       </header>
@@ -466,7 +466,7 @@ export default function AdminPage() {
             key={t}
             onClick={() => setTab(t)}
             className={`px-4 py-3 text-sm whitespace-nowrap transition-colors ${tab === t
-              ? 'text-gray-900 border-b-2 border-gray-900 font-medium'
+              ? 'text-gold border-b-2 border-gold font-semibold font-medium'
               : 'text-gray-500 hover:text-gray-700'
               }`}
           >

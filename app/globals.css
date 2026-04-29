@@ -91,6 +91,7 @@
   --color-dark-red: #7B1C1C;
   --color-title: #1b1b1b;
   --color-highlight: #7f704f;
+  --animate-down: fade-down 0.8s ease-out forwards;
   --animate-left: slide-in-left 0.8s ease-out forwards;
   --animate-right: slide-in-right 0.8s ease-out forwards;
   --animate-up: fade-up 0.8s ease-out forwards;
@@ -129,23 +130,49 @@ html {
 }
 
 @keyframes slide-in-left {
-  0% { transform: translateX(-120%); opacity: 0; }
-  100% { transform: translateX(0); opacity: 1; }
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 @keyframes slide-in-right {
-  0% { transform: translateX(120%); opacity: 0; }
-  100% { transform: translateX(0); opacity: 1; }
+  0% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 @keyframes envelope-bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 @keyframes music-spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes bowSway {
@@ -170,6 +197,34 @@ html {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes fade-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility animation-up {
+  animation: fade-up 0.8s ease-out forwards;
+}
+
+@utility animation-down {
+  animation: fade-down 0.8s ease-out forwards;
+}
+
+@utility animation-left {
+  animation: slide-in-left 0.8s ease-out forwards;
+}
+
+@utility animation-right {
+  animation: slide-in-right 0.8s ease-out forwards;
 }
 
 .film-wrapper {

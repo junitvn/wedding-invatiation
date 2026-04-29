@@ -80,11 +80,11 @@ export default function HeroSectionVer2() {
                 <img src={imageUrl('/images/hoa_cuoi_1.webp')} alt="" className="absolute -left-8 top-[120px] w-24 animate-left rotate-30" />
                 <img src={imageUrl('/images/hoa_cuoi_2.webp')} alt="" className="absolute -right-6 top-[475px] w-20 animate-right -rotate-30" />
 
-                <p className="text-title text-[46px] font-normal font-katty tracking-widest animation-up">
+                <p className="text-title text-[46px] font-normal font-katty tracking-widest animate-up">
                     Wedding Invitation
                 </p>
 
-                <div className="mt-10">
+                <div className="mt-10 animate-up">
                     <EnvelopeSection onOpen={() => {
                         if (!isPlaying) {
                             audioRef.current?.play().then(() => setIsPlaying(true)).catch(() => { });

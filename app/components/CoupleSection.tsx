@@ -8,7 +8,7 @@ export default function CoupleSection() {
 
       {/* Text */}
 
-      <p className="text-center text-title tracking-[0.1px] font-light text-[14px] font-sf leading-relaxed whitespace-pre-line">
+      <p className="text-center text-title tracking-[0.1px] font-light text-[14px] font-sf leading-relaxed whitespace-pre-line animate-up">
         {`
         Gửi đến bạn tấm thiệp cưới đầy yêu thương. 
         Những ai nhận được lời mời này đều là những người đặc biệt với bọn mình. 
@@ -23,9 +23,9 @@ export default function CoupleSection() {
       <div className="mt-12 -mx-8">
         {/* Header */}
         <div className="flex justify-between font-sf items-center text-black px-8 py-2">
-          <span className="font-normal tracking-[0.3em] text-[13px] uppercase" style={{ fontFamily: 'var(--gf-montserrat), sans-serif' }}>Fall In</span>
-          <span className="font-normal tracking-[0.3em] text-[13px] uppercase" style={{ fontFamily: 'var(--gf-montserrat), sans-serif' }}>Love</span>
-          <span className="font-normal tracking-[0.3em] text-[13px] uppercase" style={{ fontFamily: 'var(--gf-montserrat), sans-serif' }}>Wedding</span>
+          <span className="font-normal tracking-[0.3em] text-[13px] uppercase animate-left" style={{ fontFamily: 'var(--gf-montserrat), sans-serif' }}>Fall In</span>
+          <span className="font-normal tracking-[0.3em] text-[13px] uppercase animate-down" style={{ fontFamily: 'var(--gf-montserrat), sans-serif' }}>Love</span>
+          <span className="font-normal tracking-[0.3em] text-[13px] uppercase animate-right" style={{ fontFamily: 'var(--gf-montserrat), sans-serif' }}>Wedding</span>
         </div>
         <div className="h-7 bg-black" />
         {/* Photo with caption */}
@@ -39,7 +39,7 @@ export default function CoupleSection() {
             }}
           />
           <div className="absolute bottom-0 left-0 right-0 bg-black px-5 py-2">
-            <p className="text-white text-center text-[12px] font-light font-sf tracking-wide leading-relaxed font-sf">
+            <p className="text-white text-center text-[12px] font-light font-sf tracking-wide leading-relaxed font-sf animate-up">
               As the clouds and mist dissipate, I love you and everyone knows it
             </p>
           </div>
@@ -55,7 +55,7 @@ export default function CoupleSection() {
       <div className="grid grid-cols-2 gap-4 mt-16">
         {/* Groom */}
         <div className="flex flex-col items-center">
-          <div className="w-full aspect-[3/4] bg-gray-200 rounded overflow-hidden">
+          <div className="w-full aspect-[3/4] bg-gray-200 rounded overflow-hidden animate-left">
             <img
               src={imageUrl('/images/groom.jpg')}
               alt="Chú rể"
@@ -65,17 +65,19 @@ export default function CoupleSection() {
               }}
             />
           </div>
-          <div className="w-[1px] h-[32px] mt-[20px] bg-[#C0A062]" />
-          <p
-            className="text-[#C0A062] font-uvn text-[28px]"
-          >
-            Ngọc Lâm
-          </p>
+          <div className="flex flex-col items-center animate-left">
+            <div className="w-[1px] h-[32px] mt-[20px] bg-[#C0A062]" />
+            <p
+              className="text-[#C0A062] font-uvn text-[28px]"
+            >
+              Ngọc Lâm
+            </p>
+          </div>
         </div>
 
         {/* Bride */}
         <div className="flex flex-col items-center">
-          <div className="w-full aspect-[3/4] bg-gray-200 rounded overflow-hidden">
+          <div className="w-full aspect-[3/4] bg-gray-200 rounded overflow-hidden animate-right">
             <img
               src={imageUrl('/images/bride.jpg')}
               alt="Cô dâu"
@@ -85,12 +87,14 @@ export default function CoupleSection() {
               }}
             />
           </div>
-          <div className="w-[1px] h-[32px] mt-[20px] bg-[#C0A062]" />
-          <p
-            className="text-[#C0A062] font-uvn text-[28px]"
-          >
-            Ngọc Bích
-          </p>
+          <div className="flex flex-col items-center animate-right">
+            <div className="w-[1px] h-[32px] mt-[20px] bg-[#C0A062]" />
+            <p
+              className="text-[#C0A062] font-uvn text-[28px]"
+            >
+              Ngọc Bích
+            </p>
+          </div>
         </div>
       </div>
     </section>

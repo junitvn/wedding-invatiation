@@ -13,8 +13,8 @@ const HEART_CONFIGS = [
   { dx: -40, delay: 0, size: 64, rotate: 0 },
 ];
 
-const W = 340;
-const H = 226;
+const W = 300;
+const H = 206;
 const SLIDE = 100;
 const FOLD = 52;
 const TOTAL_H = H + SLIDE;

@@ -44,7 +44,7 @@ export default function RSVPSection({ venue, defaultName }: { venue: string; def
   }
 
   return (
-    <section className="bg-[#F7F5F2] py-12 px-6">
+    <section className="py-12 px-6">
       <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-sm px-6 py-8">
         <h2 className="text-gray-900 text-[20px] font-semibold font-sf mb-6 text-center">
           Xác nhận tham dự

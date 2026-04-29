@@ -5,7 +5,8 @@
       "Bash(npm run *)",
       "Bash(curl -s http://localhost:3000)",
       "Bash(npm install *)",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(node -e \"const tw = require\\('/Users/lamnguyen/code/wedding/node_modules/tailwindcss/package.json'\\); console.log\\(tw.version\\)\")"
     ]
   }
 }

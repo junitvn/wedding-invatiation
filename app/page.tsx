@@ -1,11 +1,14 @@
 import InvitationSection from './components/InvitationSection';
+import SaveTheDateSection from './components/SaveTheDateSection';
 import CoupleSection from './components/CoupleSection';
+import PhotosSection from './components/PhotosSection';
 import CeremonySection from './components/CeremonySection';
 import CalendarSection from './components/CalendarSection';
 import WishesSection from './components/WishesSection';
 import RSVPSection from './components/RSVPSection';
 import { GUESTS, VENUES } from './config';
 import HeroSectionVer2 from './components/HeroSectionVer2';
+import { imageUrl } from './lib/image';
 
 async function fetchGuestName(key: string): Promise<string> {
   const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
@@ -43,17 +46,17 @@ export default async function Home({
       <InvitationSection guestName={guestName} venue={VENUES[resolvedVenueKey]} />
       <CoupleSection />
       <CeremonySection />
-      <CalendarSection />
-      {/* <AddressSection venue={venueConfig} /> */}
-      <WishesSection venue={resolvedVenueKey} />
+      <PhotosSection />
+      <SaveTheDateSection />
+      {/* <WishesSection venue={resolvedVenueKey} /> */}
       <RSVPSection venue={resolvedVenueKey} />
 
-      <footer className="bg-white text-center py-8 border-t border-gray-100">
+      <footer className="bg-white text-center flex flex-col items-center justify-center pt-16 pb-6 gap-16 ">
+        <img src={imageUrl('/images/thanks.webp')} className='w-[80px] animate-up' alt="" />
         <p
-          className="text-gray-400 text-xs tracking-widest"
-          style={{ fontFamily: 'var(--gf-montserrat), sans-serif' }}
+          className="text-gold text-[32px] tracking-widest font-uvn animate-up"
         >
-          Ngọc Lâm &amp; Ngọc Bích · 2026
+          Thank you
         </p>
       </footer>
     </main>
