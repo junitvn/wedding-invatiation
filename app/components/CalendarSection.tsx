@@ -56,7 +56,7 @@ export default function CalendarSection() {
               <textPath href="#archEdge" startOffset="50%" textAnchor="middle">
                 WELCOME TO OUR WEDDING
               </textPath>
-            </text>nhà
+            </text>
           </svg>
 
           {/* Calendar overlay at bottom of image */}
