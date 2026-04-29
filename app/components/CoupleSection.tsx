@@ -8,7 +8,7 @@ const T: Transition = { duration: 0.8, ease: 'easeOut' };
 
 export default function CoupleSection() {
   return (
-    <section className="bg-white py-12 px-4">
+    <section className="bg-white pb-12 pt-4 px-4">
 
       {/* Text */}
       <motion.p
@@ -102,7 +102,7 @@ export default function CoupleSection() {
             <img
               src={imageUrl('/images/groom.jpg')}
               alt="Chú rể"
-              className="w-full h-full object-cover object-top"
+              className="w-full h-full object-cover scale-[1.6] object-top"
               onError={(e) => {
                 (e.target as HTMLImageElement).style.display = 'none';
               }}
@@ -148,7 +148,7 @@ export default function CoupleSection() {
             transition={T}
           >
             <div className="w-[1px] h-[32px] mt-[20px] bg-[#C0A062]" />
-            <p className="text-[#C0A062] font-uvn text-[28px]">
+            <p className="text-[#C0A062] font-funky text-[28px]">
               Ngọc Bích
             </p>
           </motion.div>

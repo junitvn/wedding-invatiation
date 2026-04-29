@@ -19,7 +19,7 @@ export default function PageFooter() {
         transition={T}
       />
       <motion.p
-        className="text-gold text-[32px] tracking-widest font-uvn"
+        className="text-gold text-[40px] tracking-widest font-katty"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={VP}

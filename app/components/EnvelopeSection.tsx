@@ -13,8 +13,8 @@ const HEART_CONFIGS = [
   { dx: -40, delay: 0, size: 64, rotate: 0 },
 ];
 
-const W = 300;
-const H = 206;
+const W = 290;
+const H = 196;
 const SLIDE = 100;
 const FOLD = 52;
 const TOTAL_H = H + SLIDE;
@@ -68,7 +68,7 @@ export default function EnvelopeSection({ onOpen }: { onOpen?: () => void }) {
           }}
         >
           <img
-            src={imageUrl('/images/ngang_2.webp')}
+            src={imageUrl('/images/DSC01071.webp')}
             alt="Wedding"
             style={{ zIndex: 4 }}
             className="w-[97%] h-full object-cover object-top"

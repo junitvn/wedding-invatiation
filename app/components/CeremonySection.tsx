@@ -39,9 +39,9 @@ export default function CeremonySection() {
   const { days, hours, minutes, seconds } = useCountdown();
 
   const FILM_IMAGES = [
-    imageUrl('/images/film_1.webp'),
     imageUrl('/images/film_3.webp'),
-    imageUrl('/images/film_2.webp'),
+    imageUrl('/images/film_1.webp'),
+    imageUrl('/images/film_6.webp'),
   ]
 
   const TEXT_IN_IMAGES = [

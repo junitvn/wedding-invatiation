@@ -71,9 +71,9 @@ export default function PhotosSection() {
                 </div>
 
                 {/* Cutout sticker — overlaps bottom-left of main photo, anchored at container bottom */}
-                <div className="absolute bottom-0 left-10 w-[45%] z-20">
+                <div className="absolute -bottom-6 -left-6 w-[60%] z-20">
                     <motion.img
-                        src={imageUrl('/images/photo_2.webp')}
+                        src={imageUrl('/images/photo_8.webp')}
                         className="w-full h-auto"
                         initial={{ opacity: 0, x: '-40%' }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -87,7 +87,7 @@ export default function PhotosSection() {
 
                 {/* I LOVE YOU */}
                 <motion.p
-                    className="absolute bottom-[0%] right-10 uppercase text-gold font-katty text-[28px] leading-none text-right"
+                    className="absolute bottom-[0%] right-1 text-gold font-katty text-[40px] leading-none text-right"
                     initial={{ opacity: 0, x: '120%' }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={VP}

@@ -38,13 +38,13 @@ export default function SaveTheDateSection() {
 
       {/* SAVE THE DATE */}
       <motion.h2
-        className="text-center text-[32px] tracking-[0.12em] text-gold leading-none mb-8 font-katty"
+        className="text-center text-[48px] tracking-[0.12em] text-gold leading-none mb-8 font-katty"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={VP}
         transition={T}
       >
-        SAVE THE DATE
+        Save the date
       </motion.h2>
 
       {/* Polaroid / film card */}
