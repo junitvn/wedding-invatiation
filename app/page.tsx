@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import InvitationSection from './components/InvitationSection';
 import SaveTheDateSection from './components/SaveTheDateSection';
 import CoupleSection from './components/CoupleSection';
@@ -27,11 +28,24 @@ async function fetchGuestName(key: string): Promise<string> {
   }
 }
 
-export default async function Home({
-  searchParams,
-}: {
+type PageProps = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}) {
+};
+
+export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
+  const { guest } = await searchParams;
+  const guestKey = typeof guest === 'string' ? guest : undefined;
+  const guestName = guestKey ? await fetchGuestName(guestKey) : '';
+
+  return {
+    title: 'Thiệp Cưới · Ngọc Lâm & Ngọc Bích',
+    description: guestName
+      ? `Trân trọng kính mời bạn ${guestName} tới dự tiệc cưới của Ngọc Lâm và Ngọc Bích`
+      : 'Trân trọng kính mời bạn tới dự tiệc cưới của Ngọc Lâm và Ngọc Bích',
+  };
+}
+
+export default async function Home({ searchParams }: PageProps) {
   const { guest, venue } = await searchParams;
 
   const guestKey = typeof guest === 'string' ? guest : undefined;

@@ -10,9 +10,15 @@ export default function PhotosSection() {
     return (
         <section className="bg-white pt-12 pb-16 flex justify-center items-center flex-col overflow-hidden">
             {/* Top quote */}
-            <p className="px-10 text-title text-[14px] font-light font-sf leading-loose mb-16 whitespace-pre-line">
+            <motion.span
+                className="px-10 text-title text-[14px] font-light font-sf leading-loose mb-16 whitespace-pre-line"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={VP}
+                transition={T}
+            >
                 {`Có lẽ thế gian này có vô vàn điều tươi đẹp,\nNhưng trong lòng em, đẹp nhất vẫn chỉ có anh`}
-            </p>
+            </motion.span>
 
             {/* Collage — pb creates space for the overflowing sticker and text */}
             <div className="relative pb-[20%] w-full flex">

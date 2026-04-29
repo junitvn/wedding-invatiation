@@ -35,7 +35,7 @@ export default function CoupleSection() {
           <motion.span
             className="font-normal tracking-[0.3em] text-[13px] uppercase"
             style={{ fontFamily: 'var(--gf-montserrat), sans-serif' }}
-            initial={{ opacity: 0, x: '-120%' }}
+            initial={{ opacity: 0, x: '-20%' }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={VP}
             transition={T}
@@ -51,7 +51,7 @@ export default function CoupleSection() {
           <motion.span
             className="font-normal tracking-[0.3em] text-[13px] uppercase"
             style={{ fontFamily: 'var(--gf-montserrat), sans-serif' }}
-            initial={{ opacity: 0, x: '120%' }}
+            initial={{ opacity: 0, x: '20%' }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={VP}
             transition={T}
@@ -93,7 +93,7 @@ export default function CoupleSection() {
         <div className="flex flex-col items-center">
           <motion.div
             className="w-full aspect-[3/4] bg-gray-200 rounded overflow-hidden"
-            initial={{ opacity: 0, x: '-120%' }}
+            initial={{ opacity: 0, x: '-20%' }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={VP}
             transition={T}
@@ -109,7 +109,7 @@ export default function CoupleSection() {
           </motion.div>
           <motion.div
             className="flex flex-col items-center"
-            initial={{ opacity: 0, x: '-120%' }}
+            initial={{ opacity: 0, x: '-20%' }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={VP}
             transition={T}
@@ -125,7 +125,7 @@ export default function CoupleSection() {
         <div className="flex flex-col items-center">
           <motion.div
             className="w-full aspect-[3/4] bg-gray-200 rounded overflow-hidden"
-            initial={{ opacity: 0, x: '120%' }}
+            initial={{ opacity: 0, x: '20%' }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={VP}
             transition={T}
@@ -141,7 +141,7 @@ export default function CoupleSection() {
           </motion.div>
           <motion.div
             className="flex flex-col items-center"
-            initial={{ opacity: 0, x: '120%' }}
+            initial={{ opacity: 0, x: '20%' }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={VP}
             transition={T}
