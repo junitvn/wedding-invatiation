@@ -6,7 +6,9 @@ import { imageUrl } from '../lib/image';
 const VP = { once: true, amount: 0.1 };
 const T: Transition = { duration: 0.8, ease: 'easeOut' };
 
-export default function CoupleSection() {
+export default function CoupleSection({ addressTo = 'bạn', selfRef = 'bọn mình' }: { addressTo?: string; selfRef?: string }) {
+  const to = addressTo || 'bạn';
+  const us = selfRef || 'bọn mình';
   return (
     <section className="bg-white pb-12 pt-4 px-4">
 
@@ -18,15 +20,7 @@ export default function CoupleSection() {
         viewport={VP}
         transition={T}
       >
-        {`
-        Gửi đến bạn tấm thiệp cưới đầy yêu thương.
-        Những ai nhận được lời mời này đều là những người 
-        đặc biệt với bọn mình.
-        Mong bạn và gia đình sẽ đến chung vui,
-        Cùng chứng kiến khoảnh khắc hạnh phúc nhất của hai đứa.
-        Cảm ơn vì luôn bên cạnh và yêu thương.
-        Bọn mình rất mong được gặp bạn trong ngày vui này! ❤️
-        `}
+        {`Gửi đến ${to} tấm thiệp cưới đầy yêu thương.\nNhững ai nhận được lời mời này đều là những người\nđặc biệt với ${us}.\nMong ${to} và gia đình sẽ đến chung vui,\nCùng chứng kiến khoảnh khắc hạnh phúc nhất của hai đứa.\nCảm ơn vì luôn bên cạnh và yêu thương.\n${us.charAt(0).toUpperCase() + us.slice(1)} rất mong được gặp ${to} trong ngày vui này! ❤️`}
       </motion.p>
 
       {/* Fall in love wedding */}

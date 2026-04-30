@@ -59,7 +59,7 @@ export default function GiftBoxSection({ venue = 'nhatrai' }: { venue?: string }
           <img
             src={imageUrl('/images/gift-box.png')}
             alt="Hộp quà"
-            className="w-28 h-28 object-contain"
+            className="w-20 h-20 object-contain"
           />
         </motion.button>
       </section>

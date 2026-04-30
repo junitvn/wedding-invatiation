@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import InvitationSection from './components/InvitationSection';
 import SaveTheDateSection from './components/SaveTheDateSection';
@@ -11,21 +12,69 @@ import { GUESTS, VENUES } from './config';
 import HeroSectionVer2 from './components/HeroSectionVer2';
 import PageFooter from './components/PageFooter';
 import GiftBoxSection from './components/GiftBoxSection';
+import ViewTracker from './components/ViewTracker';
+import { decodeGuestParams } from './lib/encoding';
 
-async function fetchGuestName(key: string): Promise<string> {
+type GuestData = {
+  displayName: string;
+  invitePhrase: string;
+  addressTo: string;
+  selfRef: string;
+  venueKey: string;
+  guestKey?: string;
+};
+
+type RawParams = { [key: string]: string | string[] | undefined };
+
+async function fetchGuestData(params: RawParams): Promise<GuestData> {
+  let guestKey: string | undefined;
+  let venueKey: string | undefined;
+
+  const token = typeof params.t === 'string' ? params.t : undefined;
+  if (token) {
+    const decoded = decodeGuestParams(token);
+    guestKey = decoded?.guest;
+    venueKey = decoded?.venue;
+  } else {
+    guestKey = typeof params.guest === 'string' ? params.guest : undefined;
+    venueKey = typeof params.venue === 'string' ? params.venue : undefined;
+  }
+
+  const resolvedVenueKey = venueKey && VENUES[venueKey] ? venueKey : 'nhatrai';
+
+  const defaults: GuestData = {
+    displayName: guestKey ? (GUESTS[guestKey] ?? '') : '',
+    invitePhrase: 'Trân trọng kính mời',
+    addressTo: '',
+    selfRef: 'chúng tôi',
+    venueKey: resolvedVenueKey,
+    guestKey,
+  };
+
+  if (!guestKey) return defaults;
+
   const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
   const apiKey = process.env.NEXT_PUBLIC_FIREBASE_API_KEY;
-  if (!projectId || !apiKey) return GUESTS[key] ?? '';
+  if (!projectId || !apiKey) return defaults;
+
   try {
     const res = await fetch(
-      `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents/guests/${key}?key=${apiKey}`,
+      `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents/guests/${guestKey}?key=${apiKey}`,
       { next: { revalidate: 60 } }
     );
-    if (!res.ok) return GUESTS[key] ?? '';
+    if (!res.ok) return defaults;
     const data = await res.json();
-    return data.fields?.displayName?.stringValue ?? GUESTS[key] ?? '';
+    const f = data.fields ?? {};
+    return {
+      displayName: f.displayName?.stringValue ?? defaults.displayName,
+      invitePhrase: f.invitePhrase?.stringValue ?? defaults.invitePhrase,
+      addressTo: f.addressTo?.stringValue ?? defaults.addressTo,
+      selfRef: f.selfRef?.stringValue ?? defaults.selfRef,
+      venueKey: resolvedVenueKey,
+      guestKey,
+    };
   } catch {
-    return GUESTS[key] ?? '';
+    return defaults;
   }
 }
 
@@ -34,36 +83,45 @@ type PageProps = {
 };
 
 export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
-  const { guest } = await searchParams;
-  const guestKey = typeof guest === 'string' ? guest : undefined;
-  const guestName = guestKey ? await fetchGuestName(guestKey) : '';
+  const params = await searchParams;
+  const { displayName: guestName } = await fetchGuestData(params);
 
   return {
     title: 'Thiệp Cưới · Ngọc Lâm & Ngọc Bích',
     description: guestName
-      ? `Trân trọng kính mời bạn ${guestName} tới dự tiệc cưới của Ngọc Lâm và Ngọc Bích`
+      ? `Trân trọng kính mời ${guestName} tới dự tiệc cưới của Ngọc Lâm và Ngọc Bích`
       : 'Trân trọng kính mời bạn tới dự tiệc cưới của Ngọc Lâm và Ngọc Bích',
   };
 }
 
 export default async function Home({ searchParams }: PageProps) {
-  const { guest, venue } = await searchParams;
+  const params = await searchParams;
+  const guestData = await fetchGuestData(params);
 
-  const guestKey = typeof guest === 'string' ? guest : undefined;
-  const guestName = guestKey ? await fetchGuestName(guestKey) : '';
-
-  const venueKey = typeof venue === 'string' ? venue : undefined;
-  const resolvedVenueKey = (venueKey && VENUES[venueKey]) ? venueKey : 'nhatrai';
+  const guestName = guestData.displayName;
+  const invitePhrase = guestData.invitePhrase;
+  const addressTo = guestData.addressTo;
+  const selfRef = guestData.selfRef;
+  const resolvedVenueKey = guestData.venueKey;
 
   return (
     <main className="bg-white" style={{ maxWidth: '430px', minHeight: '100vh', overflow: 'hidden' }}>
+      <Suspense>
+        <ViewTracker />
+      </Suspense>
       <HeroSectionVer2 />
-      <InvitationSection guestName={guestName} venue={VENUES[resolvedVenueKey]} />
-      <CoupleSection />
+      <InvitationSection
+        guestName={guestName}
+        venue={VENUES[resolvedVenueKey]}
+        invitePhrase={invitePhrase}
+        addressTo={addressTo}
+        selfRef={selfRef}
+      />
+      <CoupleSection addressTo={addressTo} selfRef={selfRef} />
       <CeremonySection />
       <PhotosSection />
       <SaveTheDateSection />
-      <RSVPSection defaultName={guestName || ''} venue={resolvedVenueKey} />
+      <RSVPSection defaultName={guestName || ''} venue={resolvedVenueKey} guestKey={guestData.guestKey} addressTo={addressTo} selfRef={selfRef} />
       <GiftBoxSection venue={resolvedVenueKey} />
       <PageFooter />
     </main>

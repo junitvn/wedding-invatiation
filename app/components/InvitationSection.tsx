@@ -6,7 +6,21 @@ import { DEFAULT_VENUE, VenueConfig } from '../config';
 const VP = { once: true, amount: 0.1 };
 const T: Transition = { duration: 0.8, ease: 'easeOut' };
 
-export default function InvitationSection({ guestName, venue = DEFAULT_VENUE }: { guestName?: string; venue?: VenueConfig }) {
+export default function InvitationSection({
+  guestName,
+  venue = DEFAULT_VENUE,
+  invitePhrase = 'Trân trọng kính mời',
+  addressTo = '',
+  selfRef = 'chúng tôi',
+}: {
+  guestName?: string;
+  venue?: VenueConfig;
+  invitePhrase?: string;
+  addressTo?: string;
+  selfRef?: string;
+}) {
+  const greeting = invitePhrase;
+
   return (
     <section className="bg-white py-8 px-6 text-center">
       <motion.p
@@ -15,7 +29,7 @@ export default function InvitationSection({ guestName, venue = DEFAULT_VENUE }: 
         whileInView={{ opacity: 1, y: 0 }}
         viewport={VP}
         transition={T}
-      >Trân trọng kính mời</motion.p>
+      >{greeting}</motion.p>
 
       {/* Blank name line */}
       <motion.div
@@ -34,7 +48,7 @@ export default function InvitationSection({ guestName, venue = DEFAULT_VENUE }: 
         whileInView={{ opacity: 1, y: 0 }}
         viewport={VP}
         transition={T}
-      >{`đến dự bữa tiệc chung vui\ncùng gia đình chúng tôi vào lúc`}</motion.p>
+      >{`đến dự bữa tiệc chung vui\ncùng gia đình ${selfRef} vào lúc`}</motion.p>
 
       <motion.p
         className="uppercase tracking-[0.2em] text-highlight text-[16px] font-sf font-light mb-1"

@@ -1,10 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { collection, addDoc, serverTimestamp, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 
-export default function RSVPSection({ venue, defaultName }: { venue: string; defaultName?: string }) {
+export default function RSVPSection({ venue, defaultName, guestKey, addressTo, selfRef }: {
+  venue: string;
+  defaultName?: string;
+  guestKey?: string;
+  addressTo?: string;
+  selfRef?: string;
+}) {
+  const you = addressTo || 'bạn';
+  const us = selfRef || 'chúng tôi';
   const [name, setName] = useState(defaultName ?? '');
   const [attending, setAttending] = useState<boolean>(true);
   const [guestCount, setGuestCount] = useState(1);
@@ -22,6 +30,12 @@ export default function RSVPSection({ venue, defaultName }: { venue: string; def
         venue,
         createdAt: serverTimestamp(),
       });
+      if (guestKey) {
+        await updateDoc(doc(db, 'guests', guestKey), {
+          confirmStatus: attending ? 'attending' : 'not_attending',
+          attendingCount: attending ? guestCount : 0,
+        });
+      }
       setStatus('done');
     } catch {
       setStatus('error');
@@ -35,8 +49,8 @@ export default function RSVPSection({ venue, defaultName }: { venue: string; def
           <p className="text-gray-700 text-[18px] font-sf font-medium mb-2">Cảm ơn bạn!</p>
           <p className="text-gray-500 text-[14px] font-sf">
             {attending
-              ? 'Chúng tôi rất vui được đón bạn trong ngày trọng đại này.'
-              : 'Rất tiếc khi không có bạn, nhưng chúng tôi trân trọng sự phản hồi của bạn.'}
+              ? `${us.charAt(0).toUpperCase() + us.slice(1)} rất vui được đón ${you} trong ngày trọng đại này.`
+              : `Thật tiếc khi ${you} không thể tham dự, nhưng ${us} trân trọng sự phản hồi của ${you}.`}
           </p>
         </div>
       </section>
@@ -49,10 +63,6 @@ export default function RSVPSection({ venue, defaultName }: { venue: string; def
         <h2 className="text-gold text-[20px] font-normal font-sf mb-6 text-center">
           Xác nhận tham dự
         </h2>
-
-        <label className="block text-gray-700 text-[14px] font-sf font-normal mb-1">
-          Họ và tên
-        </label>
         <input
           type="text"
           value={name}
@@ -62,7 +72,6 @@ export default function RSVPSection({ venue, defaultName }: { venue: string; def
           className="w-full border border-gray-200 rounded-lg px-4 py-3 text-[14px] font-sf text-gray-700 placeholder-gray-400 focus:outline-none focus:border-gray-400 mb-5"
         />
 
-        <p className="text-gray-700 text-[14px] font-sf font-normal mb-3">Bạn sẽ tham dự chứ?</p>
         <div className="flex flex-col gap-3 mb-5">
           <label className="flex items-center gap-3 cursor-pointer">
             <input
@@ -72,7 +81,7 @@ export default function RSVPSection({ venue, defaultName }: { venue: string; def
               onChange={() => setAttending(true)}
               className="w-5 h-5 accent-blue-500"
             />
-            <span className="text-gray-700 text-[14px] font-sf">Có, tôi sẽ tham dự</span>
+            <span className="text-gray-700 text-[14px] font-sf">Có, {you} sẽ tham dự</span>
           </label>
           <label className="flex items-start gap-3 cursor-pointer">
             <input
@@ -83,7 +92,7 @@ export default function RSVPSection({ venue, defaultName }: { venue: string; def
               className="w-5 h-5 mt-0.5 accent-blue-500"
             />
             <span className="text-gray-700 text-[14px] font-sf">
-              Tôi bận, rất tiếc không thể tham dự :'(
+              {you.charAt(0).toUpperCase() + you.slice(1)} bận, rất tiếc không thể tham dự :'(
             </span>
           </label>
         </div>
