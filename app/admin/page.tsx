@@ -354,6 +354,9 @@ function GuestRow({ g, onEdit }: { g: GuestEntry; onEdit: (g: GuestEntry) => voi
       <td className="px-3 py-2.5 text-gray-600 whitespace-nowrap text-xs">
         {g.addressTo && g.selfRef ? `${g.addressTo} — ${g.selfRef}` : '—'}
       </td>
+      <td className="px-3 py-2.5 text-gray-600 whitespace-nowrap text-xs">
+        {g.invitePhrase || '—'}
+      </td>
       <td className="px-3 py-2.5 whitespace-nowrap">
         <span className={`text-[11px] px-2 py-0.5 rounded-full font-medium ${CONFIRM_COLORS[g.confirmStatus]}`}>
           {CONFIRM_LABELS[g.confirmStatus]}
@@ -490,6 +493,32 @@ function GuestsTab() {
     URL.revokeObjectURL(url);
   }
 
+  function exportCsv() {
+    const header = 'displayName,venue,addressTo,selfRef,invitePhrase,confirmStatus,attendingCount,sentStatus,viewStatus,link';
+    const rows = guests
+      .filter(g => filter === 'all' || g.venue === filter)
+      .map(g => [
+        g.displayName,
+        g.venue,
+        g.addressTo,
+        g.selfRef,
+        g.invitePhrase,
+        g.confirmStatus,
+        g.attendingCount,
+        g.sentStatus,
+        g.viewStatus,
+        buildEncodedLink(g.key, g.venue),
+      ].map(v => `"${String(v ?? '').replace(/"/g, '""')}"`).join(','));
+    const content = [header, ...rows].join('\n');
+    const blob = new Blob(['﻿' + content], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `guests-${new Date().toISOString().slice(0, 10)}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
   function handleCsvImport(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -552,6 +581,12 @@ function GuestsTab() {
           onClick={openAdd}
           className="px-3 py-2 bg-gray-900 text-white rounded-lg text-xs whitespace-nowrap">
           + Thêm
+        </button>
+        <button
+          type="button"
+          onClick={exportCsv}
+          className="px-3 py-2 border border-gray-200 bg-white text-gray-700 rounded-lg text-xs whitespace-nowrap">
+          Export CSV
         </button>
         <button
           type="button"
@@ -638,6 +673,7 @@ function GuestsTab() {
                 <th className="px-3 py-2.5 text-left font-medium">Họ tên</th>
                 <th className="px-3 py-2.5 text-left font-medium">Nhà</th>
                 <th className="px-3 py-2.5 text-left font-medium">Xưng hô</th>
+                <th className="px-3 py-2.5 text-left font-medium">Từ mời</th>
                 <th className="px-3 py-2.5 text-left font-medium">Xác nhận</th>
                 <th className="px-3 py-2.5 text-center font-medium">Số người</th>
                 <th className="px-3 py-2.5 text-left font-medium">Gửi</th>
@@ -742,7 +778,7 @@ function VenuesTab() {
 // ─── Main admin page ──────────────────────────────────────────────────────────
 export default function AdminPage() {
   const [authed, setAuthed] = useState(false);
-  const [tab, setTab] = useState<Tab>('Lời chúc');
+  const [tab, setTab] = useState<Tab>('Khách mời');
 
   if (!authed) return <Login onAuth={() => setAuthed(true)} />;
 
@@ -763,9 +799,8 @@ export default function AdminPage() {
       </div>
 
       <div className="px-4 py-6">
-        {tab === 'Lời chúc' && <WishesTab />}
-        {tab === 'Xác nhận' && <ConfirmationsTab />}
         {tab === 'Khách mời' && <GuestsTab />}
+        {tab === 'Lời chúc' && <WishesTab />}
       </div>
     </div>
   );
