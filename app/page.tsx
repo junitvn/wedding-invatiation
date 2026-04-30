@@ -10,6 +10,7 @@ import RSVPSection from './components/RSVPSection';
 import { GUESTS, VENUES } from './config';
 import HeroSectionVer2 from './components/HeroSectionVer2';
 import PageFooter from './components/PageFooter';
+import GiftBoxSection from './components/GiftBoxSection';
 
 async function fetchGuestName(key: string): Promise<string> {
   const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
@@ -63,7 +64,7 @@ export default async function Home({ searchParams }: PageProps) {
       <PhotosSection />
       <SaveTheDateSection />
       <RSVPSection defaultName={guestName || ''} venue={resolvedVenueKey} />
-      {/* GiftBoxSection */}
+      <GiftBoxSection venue={resolvedVenueKey} />
       <PageFooter />
     </main>
   );
