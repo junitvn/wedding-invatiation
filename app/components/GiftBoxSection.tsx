@@ -12,14 +12,14 @@ const GIFT_CONFIG: Record<string, {
   qr: string;
 }> = {
   nhatrai: {
-    label: 'Chú rể · Ngọc Lâm',
+    label: 'Chú rể · Nguyễn Ngọc Lâm',
     name: 'NGUYỄN NGỌC LÂM',
     bank: 'VPBank',
     accountNumber: '88882202',
     qr: imageUrl('/images/qr_nhatrai_2.webp'),
   },
   nhagai: {
-    label: 'Cô dâu · Ngọc Bích',
+    label: 'Cô dâu · Lý Ngọc Bích',
     name: 'LÝ NGỌC BÍCH',
     bank: 'TPBank',
     accountNumber: '08295108686',
@@ -121,6 +121,8 @@ export default function GiftBoxSection({ venue = 'nhatrai' }: { venue?: string }
 
               {/* Account info */}
               <div className="mx-5 mb-6 bg-[#F7F5F2] rounded-xl px-4 py-4">
+                <p className="text-[15px] text-gray-800 font-sf font-semibold mb-3">{cfg.label}</p>
+
                 <p className="text-[11px] text-gray-400 font-sf uppercase tracking-wide mb-0.5">
                   {cfg.bank}
                 </p>
