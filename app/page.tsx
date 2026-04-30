@@ -13,6 +13,7 @@ import HeroSectionVer2 from './components/HeroSectionVer2';
 import PageFooter from './components/PageFooter';
 import GiftBoxSection from './components/GiftBoxSection';
 import ViewTracker from './components/ViewTracker';
+import FloatingWishesWidget from './components/FloatingWishesWidget';
 import { decodeGuestParams } from './lib/encoding';
 
 type GuestData = {
@@ -105,9 +106,12 @@ export default async function Home({ searchParams }: PageProps) {
   const resolvedVenueKey = guestData.venueKey;
 
   return (
-    <main className="bg-white" style={{ maxWidth: '430px', minHeight: '100vh', overflow: 'hidden' }}>
+    <main className="bg-white" style={{ maxWidth: '430px', minHeight: '100vh', overflow: 'hidden', paddingBottom: '96px' }}>
       <Suspense>
         <ViewTracker />
+      </Suspense>
+      <Suspense>
+        <FloatingWishesWidget defaultName={guestName} venue={resolvedVenueKey} />
       </Suspense>
       <HeroSectionVer2 />
       <InvitationSection
