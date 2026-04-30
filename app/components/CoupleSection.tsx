@@ -94,9 +94,9 @@ export default function CoupleSection({ addressTo = 'bạn', selfRef = 'bọn m�
             transition={T}
           >
             <img
-              src={imageUrl('/images/groom.jpg')}
+              src={imageUrl('/images/groom_2.webp')}
               alt="Chú rể"
-              className="w-full h-full object-cover scale-[1.6] object-top"
+              className="w-full h-full object-cover object-top"
               onError={(e) => {
                 (e.target as HTMLImageElement).style.display = 'none';
               }}
@@ -126,7 +126,7 @@ export default function CoupleSection({ addressTo = 'bạn', selfRef = 'bọn m�
             transition={T}
           >
             <img
-              src={imageUrl('/images/bride.jpg')}
+              src={imageUrl('/images/bride_2.webp')}
               alt="Cô dâu"
               className="w-full h-full object-cover object-top"
               onError={(e) => {

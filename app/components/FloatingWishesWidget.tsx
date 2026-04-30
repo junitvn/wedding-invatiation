@@ -24,7 +24,7 @@ export default function FloatingWishesWidget({
 }) {
   const [wishes, setWishes] = useState<Wish[]>([]);
   const [floatingItems, setFloatingItems] = useState<FloatingItem[]>([]);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
   const [sheetOpen, setSheetOpen] = useState(false);
   const [name, setName] = useState(defaultName);
   const [content, setContent] = useState('');
@@ -155,11 +155,8 @@ export default function FloatingWishesWidget({
 
           <button
             onClick={() => setVisible(v => !v)}
-            className="w-11 h-11 rounded-full flex items-center justify-center shadow-lg ml-auto flex-shrink-0"
+            className="flex items-center justify-center ml-auto flex-shrink-0"
             style={{
-              backgroundColor: visible
-                ? 'rgba(255,255,255,0.88)'
-                : 'rgba(212,99,122,0.92)',
               backdropFilter: 'blur(10px)',
             }}
           >
