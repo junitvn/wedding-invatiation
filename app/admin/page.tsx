@@ -472,6 +472,24 @@ function GuestsTab() {
     closeModal();
   }
 
+  const [showCsvModal, setShowCsvModal] = useState(false);
+
+  function downloadTemplate() {
+    const header = 'displayName,venue,addressTo,selfRef,invitePhrase';
+    const rows = [
+      'Nguyễn Văn A,nhatrai,bạn,bọn mình,Trân trọng kính mời',
+      'Trần Thị B,nhagai,chị,tụi mình,Thân mời',
+    ];
+    const content = [header, ...rows].join('\n');
+    const blob = new Blob(['﻿' + content], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'guest-template.csv';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
   function handleCsvImport(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -537,13 +555,64 @@ function GuestsTab() {
         </button>
         <button
           type="button"
-          onClick={() => csvRef.current?.click()}
+          onClick={() => setShowCsvModal(true)}
           disabled={importing}
           className="px-3 py-2 border border-gray-200 bg-white text-gray-700 rounded-lg text-xs whitespace-nowrap disabled:opacity-50">
           {importing ? 'Importing...' : 'Import CSV'}
         </button>
-        <input ref={csvRef} type="file" accept=".csv,text/csv" className="hidden" onChange={handleCsvImport} />
+        <input ref={csvRef} type="file" accept=".csv,text/csv" className="hidden" onChange={e => { handleCsvImport(e); setShowCsvModal(false); }} />
       </div>
+
+      {/* CSV Import Modal */}
+      {showCsvModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4" onClick={() => setShowCsvModal(false)}>
+          <div className="bg-white rounded-2xl shadow-xl w-full max-w-lg overflow-hidden" onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
+              <p className="text-gray-800 font-medium text-sm">Import danh sách khách mời</p>
+              <button type="button" onClick={() => setShowCsvModal(false)} className="text-gray-400 hover:text-gray-600 text-lg leading-none">✕</button>
+            </div>
+            <div className="px-5 py-4 flex flex-col gap-4">
+              {/* Template */}
+              <div>
+                <p className="text-xs font-medium text-gray-700 mb-1.5">Template CSV</p>
+                <div className="bg-gray-50 rounded-lg p-3 font-mono text-[11px] text-gray-600 leading-relaxed overflow-x-auto whitespace-nowrap">
+                  <p className="text-gray-400">displayName,venue,addressTo,selfRef,invitePhrase</p>
+                  <p>Nguyễn Văn A,nhatrai,bạn,bọn mình,Trân trọng kính mời</p>
+                  <p>Trần Thị B,nhagai,chị,tụi mình,Thân mời</p>
+                </div>
+                <p className="text-[11px] text-gray-400 mt-1.5">venue: <span className="font-mono">nhatrai</span> hoặc <span className="font-mono">nhagai</span></p>
+              </div>
+              <button
+                type="button"
+                onClick={downloadTemplate}
+                className="flex items-center justify-center gap-2 w-full py-2.5 border border-gray-200 rounded-lg text-sm text-gray-700 hover:bg-gray-50">
+                ↓ Tải template CSV
+              </button>
+
+              {/* Google Sheets guide */}
+              <div>
+                <p className="text-xs font-medium text-gray-700 mb-1.5">Hướng dẫn chỉnh sửa bằng Google Sheets</p>
+                <ol className="text-xs text-gray-600 flex flex-col gap-1 list-decimal list-inside leading-relaxed">
+                  <li>Tải template CSV về máy</li>
+                  <li>Mở <span className="font-medium">Google Sheets</span> → Tạo bảng tính mới</li>
+                  <li>Vào <span className="font-medium">File → Import</span> → Chọn file CSV vừa tải</li>
+                  <li>Chọn <span className="font-medium">Comma</span> làm dấu phân cách, nhấn Import</li>
+                  <li>Điền danh sách khách mời vào các cột</li>
+                  <li>Xuất lại: <span className="font-medium">File → Download → CSV</span></li>
+                </ol>
+              </div>
+
+              {/* Import button */}
+              <button
+                type="button"
+                onClick={() => csvRef.current?.click()}
+                className="w-full py-2.5 bg-gray-900 text-white rounded-lg text-sm">
+                Chọn file CSV đã chỉnh sửa để import
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Filter */}
       <VenueFilterBar value={filter} onChange={setFilter} />
