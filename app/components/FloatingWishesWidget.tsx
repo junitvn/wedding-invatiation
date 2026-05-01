@@ -11,6 +11,7 @@ import {
   orderBy,
 } from 'firebase/firestore';
 import { db } from '../lib/firebase';
+import { imageUrl } from '../lib/image';
 
 type Wish = { id: string; name: string; content: string };
 type FloatingItem = { key: string; wish: Wish };
@@ -174,7 +175,7 @@ export default function FloatingWishesWidget({
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
             ) : (
-              <img className='w-20 h-auto' src="/images/message-heart.png" alt="Message heart" />
+              <img className='w-20 h-auto' src={imageUrl('/images/message-heart.png')} alt="Message heart" />
             )}
           </button>
         </div>
@@ -206,7 +207,7 @@ export default function FloatingWishesWidget({
                   <div
                     className="w-32 h-fit rounded-2xl flex items-center justify-center"
                   >
-                    <img className='w-full h-full' src="/images/message-heart.png" alt="Message heart" />
+                    <img className='w-full h-full' src={imageUrl('/images/message-heart.png')} alt="Message heart" />
                   </div>
                 </div>
 
