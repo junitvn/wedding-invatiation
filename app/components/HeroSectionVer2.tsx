@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import { motion, type Transition } from 'framer-motion';
 import { imageUrl } from '../lib/image';
 import EnvelopeSection from './EnvelopeSection';
@@ -14,9 +15,22 @@ const VP = { once: true, amount: 0.1 };
 const T: Transition = { duration: 0.8, ease: 'easeOut' };
 
 export default function HeroSectionVer2() {
+    const router = useRouter();
     const [isPlaying, setIsPlaying] = useState(true);
     const [songIndex, setSongIndex] = useState(0);
     const audioRef = useRef<HTMLAudioElement>(null);
+    const longPressTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+    const startLongPress = () => {
+        longPressTimer.current = setTimeout(() => router.push('/admin'), 3000);
+    };
+
+    const cancelLongPress = () => {
+        if (longPressTimer.current) {
+            clearTimeout(longPressTimer.current);
+            longPressTimer.current = null;
+        }
+    };
 
     // Attempt autoplay on mount
     useEffect(() => {
@@ -84,11 +98,15 @@ export default function HeroSectionVer2() {
                 <motion.img
                     src={imageUrl('/images/hoa_cuoi_1.webp')}
                     alt=""
-                    className="absolute left-0 top-[120px] w-24 rotate-30"
+                    className="absolute left-0 top-[120px] w-24 rotate-30 select-none"
                     initial={{ opacity: 0, x: '-100%' }}
                     whileInView={{ opacity: 1, x: -40 }}
                     viewport={VP}
                     transition={T}
+                    onPointerDown={startLongPress}
+                    onPointerUp={cancelLongPress}
+                    onPointerLeave={cancelLongPress}
+                    onContextMenu={e => e.preventDefault()}
                 />
                 <motion.img
                     src={imageUrl('/images/hoa_cuoi_2.webp')}

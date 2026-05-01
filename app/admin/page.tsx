@@ -69,7 +69,7 @@ function slugify(name: string): string {
 
 // ─── Login ───────────────────────────────────────────────────────────────────
 function Login({ onAuth }: { onAuth: () => void }) {
-  const [pw, setPw] = useState('admin123');
+  const [pw, setPw] = useState('');
   const [err, setErr] = useState(false);
   function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
