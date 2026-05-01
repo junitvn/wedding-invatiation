@@ -157,9 +157,6 @@ export default function FloatingWishesWidget({
           <button
             onClick={() => setVisible(v => !v)}
             className="flex items-center justify-center ml-auto flex-shrink-0"
-            style={{
-              backdropFilter: 'blur(10px)',
-            }}
           >
             {visible ? (
               <svg
