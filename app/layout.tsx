@@ -25,8 +25,15 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
   title: "Thiệp Cưới · Ngọc Lâm & Ngọc Bích",
   description: "Trân trọng kính mời bạn tới dự tiệc cưới của Ngọc Lâm và Ngọc Bích",
+  openGraph: {
+    title: "Thiệp Cưới · Ngọc Lâm & Ngọc Bích",
+    description: "Trân trọng kính mời bạn tới dự tiệc cưới của Ngọc Lâm và Ngọc Bích",
+    images: [{ url: '/images/thumbnail.webp', width: 800, height: 1200 }],
+    type: 'website',
+  },
 };
 
 export default function RootLayout({

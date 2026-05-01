@@ -85,11 +85,19 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
   const params = await searchParams;
   const { displayName: guestName } = await fetchGuestData(params);
 
+  const description = guestName
+    ? `Trân trọng kính mời ${guestName} tới dự tiệc cưới của Ngọc Lâm và Ngọc Bích`
+    : 'Trân trọng kính mời bạn tới dự tiệc cưới của Ngọc Lâm và Ngọc Bích';
+
   return {
     title: 'Thiệp Cưới · Ngọc Lâm & Ngọc Bích',
-    description: guestName
-      ? `Trân trọng kính mời ${guestName} tới dự tiệc cưới của Ngọc Lâm và Ngọc Bích`
-      : 'Trân trọng kính mời bạn tới dự tiệc cưới của Ngọc Lâm và Ngọc Bích',
+    description,
+    openGraph: {
+      title: 'Thiệp Cưới · Ngọc Lâm & Ngọc Bích',
+      description,
+      images: [{ url: '/images/thumbnail.webp', width: 800, height: 1200 }],
+      type: 'website',
+    },
   };
 }
 
