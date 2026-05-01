@@ -124,7 +124,7 @@ export default function FloatingWishesWidget({
         )}
 
         {/* Bottom buttons */}
-        <div className="flex items-center gap-3 px-4 pb-8 pointer-events-auto">
+        <div className="flex items-center gap-3 px-4 pb-2 pointer-events-auto">
           <AnimatePresence>
             {visible && (
               <motion.button
@@ -135,9 +135,9 @@ export default function FloatingWishesWidget({
                 transition={{ duration: 0.2 }}
                 onClick={() => setSheetOpen(true)}
                 className="flex flex-1 items-center gap-2 rounded-full px-5 py-3 shadow-lg"
-                style={{ backgroundColor: 'rgba(255,255,255,0.88)', backdropFilter: 'blur(10px)' }}
+                style={{ backgroundColor: 'rgba(255,255,255,0.2)' }}
               >
-                <span className="text-gray-600 text-[14px]">Gửi lời chúc...</span>
+                <span className="text-white text-[14px]">Gửi lời chúc...</span>
                 <svg
                   width="18"
                   height="18"
@@ -174,7 +174,7 @@ export default function FloatingWishesWidget({
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
             ) : (
-              <span style={{ fontSize: 20 }}>💌</span>
+              <img className='w-20 h-auto' src="/images/message-heart.png" alt="Message heart" />
             )}
           </button>
         </div>
@@ -194,7 +194,7 @@ export default function FloatingWishesWidget({
             />
             <motion.div
               className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] bg-white z-50"
-              style={{ height: '50vh', borderRadius: '24px 24px 0 0' }}
+              style={{ height: 'auto', borderRadius: '24px 24px 0 0' }}
               initial={{ y: '100%' }}
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
@@ -202,12 +202,11 @@ export default function FloatingWishesWidget({
             >
               <div className="relative flex flex-col h-full px-6 pt-6 pb-8">
                 {/* Decorative icon */}
-                <div className="flex justify-center mb-3">
+                <div className="flex justify-center mb-3 absolute -top-4 left-1/2 -translate-x-1/2">
                   <div
-                    className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm"
-                    style={{ backgroundColor: '#fce8ea' }}
+                    className="w-32 h-fit rounded-2xl flex items-center justify-center"
                   >
-                    <span style={{ fontSize: 28 }}>💌</span>
+                    <img className='w-full h-full' src="/images/message-heart.png" alt="Message heart" />
                   </div>
                 </div>
 
@@ -220,8 +219,8 @@ export default function FloatingWishesWidget({
                 </button>
 
                 {/* Title */}
-                <h2 className="text-center text-[20px] font-bold text-gray-800 mb-5">
-                  Lời chúc
+                <h2 className="text-center text-[24px] font-bold text-gray-800 mb-5 mt-6">
+                  Gửi lời chúc
                 </h2>
 
                 {/* Form */}
@@ -230,28 +229,28 @@ export default function FloatingWishesWidget({
                     type="text"
                     value={name}
                     onChange={e => setName(e.target.value)}
-                    placeholder="Tên của bạn"
-                    className="w-full rounded-2xl px-4 py-3 text-[14px] text-gray-700 placeholder-gray-400 focus:outline-none"
+                    placeholder="Được gửi từ..."
+                    className="w-full rounded-[8px] px-4 py-3 text-[14px] text-gray-700 placeholder-gray-400 focus:outline-none"
                     style={{ border: '1.5px solid #f9c0c8' }}
                   />
                   <textarea
                     value={content}
                     onChange={e => setContent(e.target.value)}
-                    placeholder="Lời chúc của bạn"
-                    rows={3}
-                    className="w-full rounded-2xl px-4 py-3 text-[14px] text-gray-700 placeholder-gray-400 focus:outline-none resize-none flex-1"
+                    placeholder="Lời chúc tới cô dâu chú rể"
+                    rows={5}
+                    className="w-full rounded-[8px] px-4 py-3 text-[14px] text-gray-700 placeholder-gray-400 focus:outline-none resize-none flex-1"
                     style={{ border: '1.5px solid #f9c0c8' }}
                   />
                   <button
                     type="submit"
                     disabled={status === 'submitting' || status === 'done'}
-                    className="w-full py-4 rounded-full text-white text-[16px] font-medium disabled:opacity-60"
+                    className="w-full py-2 rounded-full text-white text-[16px] -mb-4 font-medium disabled:opacity-60"
                     style={{ backgroundColor: '#d4637a' }}
                   >
                     {status === 'submitting'
                       ? 'Đang gửi...'
                       : status === 'done'
-                        ? 'Đã gửi! 🎉'
+                        ? 'Đã gửi!'
                         : 'Gửi Lời Chúc'}
                   </button>
                   {status === 'error' && (

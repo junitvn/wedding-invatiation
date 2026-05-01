@@ -5,8 +5,6 @@ import SaveTheDateSection from './components/SaveTheDateSection';
 import CoupleSection from './components/CoupleSection';
 import PhotosSection from './components/PhotosSection';
 import CeremonySection from './components/CeremonySection';
-import CalendarSection from './components/CalendarSection';
-import WishesSection from './components/WishesSection';
 import RSVPSection from './components/RSVPSection';
 import { GUESTS, VENUES } from './config';
 import HeroSectionVer2 from './components/HeroSectionVer2';
@@ -106,7 +104,7 @@ export default async function Home({ searchParams }: PageProps) {
   const resolvedVenueKey = guestData.venueKey;
 
   return (
-    <main className="bg-white" style={{ maxWidth: '430px', minHeight: '100vh', overflow: 'hidden', paddingBottom: '96px' }}>
+    <main className="bg-white" style={{ maxWidth: '430px', minHeight: '100%', width: '100%', paddingBottom: '96px' }}>
       <Suspense>
         <ViewTracker />
       </Suspense>

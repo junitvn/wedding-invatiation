@@ -35,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi" className={`h-full antialiased ${cormorantGaramond.variable} ${greatVibes.variable} ${montserrat.variable}`}>
+    <html lang="vi" className={`h-full overflow-hidden antialiased ${cormorantGaramond.variable} ${greatVibes.variable} ${montserrat.variable}`}>
       <head>
         <meta name="color-scheme" content="light" />
         {/* Preload local fonts to prevent FOUT */}
@@ -49,8 +49,10 @@ export default function RootLayout({
         <link rel="preload" href="/fonts/SFU Sigvar/SFUSigvarRegularItalic.TTF" as="font" type="font/ttf" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/SFU Sigvar/SFUSigvarDemiBoldItalic_.TTF" as="font" type="font/ttf" crossOrigin="anonymous" />
       </head>
-      <body className="min-h-full bg-gray-100 flex flex-col items-center">
-        {children}
+      <body className="h-full overflow-hidden bg-gray-100">
+        <div className="h-full w-full overflow-y-auto overflow-x-hidden flex flex-col items-center">
+          {children}
+        </div>
       </body>
     </html>
   );
